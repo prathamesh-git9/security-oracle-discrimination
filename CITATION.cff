@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+type: software
+title: Security Oracle Discrimination Audit (soda)
+authors:
+  - family-names: Kalamkar
+    given-names: Prathamesh
+version: 0.1.0
+date-released: 2026-08-14
+license: MIT
+repository-code: https://github.com/prathamesh-git9/security-oracle-discrimination
+abstract: A research benchmark for evaluating whether security oracles distinguish executable vulnerability behaviour from lexical form.
+keywords:
+  - benchmark validity
+  - security oracle
+  - CWE
+  - static analysis
+  - LLM code generation

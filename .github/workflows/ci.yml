@@ -1,0 +1,52 @@
+name: CI
+
+"on":
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: pip install -e ".[dev,oracles]"
+      - name: Lint
+        run: ruff check .
+      - name: Test
+        run: pytest -q
+
+  audit-smoke:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: src
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -e ".[dev,oracles]"
+      # The corpus executes real exploit witnesses: they create marker files and,
+      # for CWE-78, run a shell command that writes a file in a temporary directory.
+      - name: Check corpus integrity
+        run: python -m soda.cli check
+      - name: Run end-to-end audit smoke test
+        run: python -m soda.cli audit --no-external --bootstrap 0 --out results/ci-audit.json --markdown results/ci-report.md
+      - name: Upload audit results
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-audit-results
+          path: results/
+
