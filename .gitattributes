@@ -1,0 +1,8 @@
+# Every file is checked out with LF endings on every platform.
+#
+# This is not a style preference. `corpus_sha256` in a results file is an
+# integrity claim -- "these exact bytes produced these exact numbers" -- and a
+# checkout that rewrites line endings makes the same corpus hash differently on
+# Windows and on Linux, which turns the claim into a statement about the
+# operating system. Pinning the endings is what makes the digest mean anything.
+* text=auto eol=lf
