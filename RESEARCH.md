@@ -312,6 +312,13 @@ By class, semgrep's two rulesets detected **0 of 35** real path-traversal pairs,
 **0 of 26** signature-verification pairs and **0 of 4** randomness pairs; bandit
 detected **0 of 26** signature-verification pairs.
 
+A zero is a strong claim, so the path-traversal zero was checked by hand rather
+than trusted: `p/security-audit` was run directly against the pre-fix revisions of
+`ankitects/anki` `qt/aqt/mediasrv.py`, `thumbor` `thumbor/loaders/file_loader.py`
+and `facelessuser/pymdown-extensions` `pymdownx/b64.py`, and returned **zero
+findings of any kind** on each — not findings filed under another CWE. The zero is
+absence of coverage, not the attribution problem in disguise.
+
 ### Does the hand-built corpus predict reality?
 
 Over the 30 `(oracle, weakness class)` cells the two studies share, with at least
