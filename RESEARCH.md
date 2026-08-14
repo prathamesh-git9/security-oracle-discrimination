@@ -20,7 +20,7 @@ builds a corpus of 96 Python implementations across 8 weakness classes whose
 security labels are produced by **running an exploit**, not by an author's
 judgement, and scores five oracles against those labels.
 
-**Every oracle scored below Youden's J = 0.48.** The best was a 250-line
+**Every oracle scored below Youden's J = 0.48.** The best was a 220-line
 syntax-tree matcher written for this study (J = +0.479); two production static
 analysers scored +0.271 and +0.250. False alarms concentrated three- to
 twelve-fold on secure code that merely carried the weakness's lexical signature.

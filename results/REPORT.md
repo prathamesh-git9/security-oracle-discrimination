@@ -47,6 +47,34 @@ For semgrep:p/python, the worst result, 8 of 15 behaviourally identical vulnerab
 | semgrep:p/security-audit | 3/19 (15.8% [0.0, 37.5]) | 0/29 (0.0%) |
 | semgrep:p/python | 2/19 (10.5% [0.0, 26.3]) | 0/29 (0.0%) |
 
+## Sensitivity analyses
+
+Intervals are computed for the primary analysis only; these are point estimates.
+
+### Any finding counts
+
+Deliberately over-generous: a tool may file a weakness under an identifier the harness is not looking for.
+
+| Oracle | Sensitivity | Specificity | Youden J | vs primary |
+| --- | --- | --- | --- | --- |
+| structural | 68.8% | 79.2% | +0.479 | +0.000 |
+| pattern | 75.0% | 62.5% | +0.375 | +0.000 |
+| bandit | 60.4% | 70.8% | +0.312 | +0.042 |
+| semgrep:p/security-audit | 31.2% | 93.8% | +0.250 | +0.000 |
+| semgrep:p/python | 20.8% | 95.8% | +0.167 | +0.000 |
+
+### Confident findings only
+
+Deliberately strict: a low-severity advisory note lets a checker flag every file in a class and appear sensitive while discriminating nothing. Added after the first run, so it is post-hoc.
+
+| Oracle | Sensitivity | Specificity | Youden J | vs primary |
+| --- | --- | --- | --- | --- |
+| structural | 68.8% | 79.2% | +0.479 | +0.000 |
+| pattern | 75.0% | 62.5% | +0.375 | +0.000 |
+| semgrep:p/security-audit | 31.2% | 93.8% | +0.250 | +0.000 |
+| bandit | 33.3% | 89.6% | +0.229 | -0.042 |
+| semgrep:p/python | 20.8% | 95.8% | +0.167 | +0.000 |
+
 ## Per-case detail
 
 ### cwe022_path_traversal: CWE-22: Path traversal in a document reader

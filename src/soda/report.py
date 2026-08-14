@@ -222,6 +222,77 @@ def _disagreements(records: list[dict]) -> tuple[list[list[object]], int]:
     return rows[:40], max(0, len(rows) - 40)
 
 
+#: Alternative scoring rules, and what each one is a defence against.
+_SENSITIVITY_BLOCKS = (
+    (
+        "scores_any_finding",
+        "Any finding counts",
+        "Deliberately over-generous: a tool may file a weakness under an "
+        "identifier the harness is not looking for.",
+    ),
+    (
+        "scores_confident_only",
+        "Confident findings only",
+        "Deliberately strict: a low-severity advisory note lets a checker flag "
+        "every file in a class and appear sensitive while discriminating nothing. "
+        "Added after the first run, so it is post-hoc.",
+    ),
+)
+
+
+def _sensitivity_analyses(results: dict, primary: list[dict]) -> list[str]:
+    """Show that the conclusion survives a looser and a stricter detection rule.
+
+    Reported beside the primary analysis rather than instead of it. A reader who
+    suspects the pre-declared CWE match is doing the work should be able to see
+    what happens when it is relaxed and when it is tightened, without rerunning
+    anything.
+    """
+    baseline = {score.get("oracle"): score for score in primary}
+    available = [
+        (key, title, note)
+        for key, title, note in _SENSITIVITY_BLOCKS
+        if isinstance(results.get(key), list) and results.get(key)
+    ]
+    if not available:
+        return []
+
+    lines = ["", "## Sensitivity analyses", ""]
+    lines.append(
+        "Intervals are computed for the primary analysis only; these are point "
+        "estimates."
+    )
+    for key, title, note in available:
+        scores = results[key]
+        rows: list[list[object]] = []
+        for score in sorted(scores, key=_score_order):
+            name = score.get("oracle")
+            reference = baseline.get(name, {})
+            primary_j = _finite(reference.get("youden_j"))
+            this_j = _finite(score.get("youden_j"))
+            if primary_j is None or this_j is None:
+                delta = "n/a"
+            else:
+                delta = f"{this_j - primary_j:+.3f}"
+            rows.append(
+                [
+                    _cell(name),
+                    _percentage(score.get("sensitivity")),
+                    _percentage(score.get("specificity")),
+                    _signed(score.get("youden_j")),
+                    delta,
+                ]
+            )
+        lines.extend(["", f"### {title}", "", note, ""])
+        lines.extend(
+            _table(
+                ["Oracle", "Sensitivity", "Specificity", "Youden J", "vs primary"],
+                rows,
+            )
+        )
+    return lines
+
+
 def render_markdown(results: dict) -> str:
     """Expose where oracle judgements diverge from behaviour, without rerunning it."""
     corpus = results.get("corpus", {})
@@ -330,6 +401,8 @@ def render_markdown(results: dict) -> str:
             alarm_rows,
         )
     )
+
+    lines.extend(_sensitivity_analyses(results, scores))
 
     lines.extend(["", "## Per-case detail", ""])
     lines.extend(_per_case_sections(cases, scores))
