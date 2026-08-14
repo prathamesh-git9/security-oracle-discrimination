@@ -1,0 +1,5971 @@
+{
+  "generated_at": "2026-08-14T16:14:06+00:00",
+  "environment": {
+    "python": "3.14.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "corpus_sha256": "0bf722b8c0737534ab7c8e87d4a38dc36619c762846c28f0cb8703d1454e76a3"
+  },
+  "corpus": {
+    "cases": 8,
+    "variants": 96,
+    "labels": {
+      "secure": 48,
+      "vulnerable": 48,
+      "invalid": 0
+    },
+    "case_detail": [
+      {
+        "id": "cwe022_path_traversal",
+        "cwe": "CWE-22",
+        "title": "Path traversal in a document reader",
+        "accept_cwes": [
+          "CWE-22",
+          "CWE-23",
+          "CWE-36",
+          "CWE-73"
+        ],
+        "witness": "A name walking out through an existing subdirectory returns the secret stored beside the root.",
+        "variants": 12
+      },
+      {
+        "id": "cwe078_command_injection",
+        "cwe": "CWE-78",
+        "title": "OS command injection when invoking an external tool",
+        "accept_cwes": [
+          "CWE-78",
+          "CWE-77",
+          "CWE-88"
+        ],
+        "witness": "A shell separator appended to the path runs a second command, observed as a marker file.",
+        "variants": 12
+      },
+      {
+        "id": "cwe089_sql_injection",
+        "cwe": "CWE-89",
+        "title": "SQL injection in a user lookup",
+        "accept_cwes": [
+          "CWE-89",
+          "CWE-943"
+        ],
+        "witness": "Filter bypass: an unknown username that closes the quoted literal returns the admin row.",
+        "variants": 12
+      },
+      {
+        "id": "cwe330_predictable_token",
+        "cwe": "CWE-330",
+        "title": "Session token drawn from a predictable generator",
+        "accept_cwes": [
+          "CWE-330",
+          "CWE-338",
+          "CWE-335"
+        ],
+        "witness": "The next token is predicted from one observed token by searching a small window of clock-derived seeds.",
+        "variants": 12
+      },
+      {
+        "id": "cwe347_signature_verification",
+        "cwe": "CWE-347",
+        "title": "Signed session token whose signature is not properly verified",
+        "accept_cwes": [
+          "CWE-347",
+          "CWE-345",
+          "CWE-287",
+          "CWE-807"
+        ],
+        "witness": "An administrator payload with a forged, empty, foreign-key or 'none' signature is accepted.",
+        "variants": 12
+      },
+      {
+        "id": "cwe502_session_blob",
+        "cwe": "CWE-502",
+        "title": "Unsafe deserialisation of a client-held session blob",
+        "accept_cwes": [
+          "CWE-502"
+        ],
+        "witness": "A pickle whose __reduce__ calls os.mkdir; the directory appearing proves arbitrary construction.",
+        "variants": 12
+      },
+      {
+        "id": "cwe502_yaml_deserialization",
+        "cwe": "CWE-502",
+        "title": "Unsafe deserialisation of a YAML configuration document",
+        "accept_cwes": [
+          "CWE-502"
+        ],
+        "witness": "A !!python/object/apply tag calls os.mkdir during parsing; the directory appearing proves arbitrary construction.",
+        "variants": 12
+      },
+      {
+        "id": "cwe916_password_hashing",
+        "cwe": "CWE-916",
+        "title": "Password stored with a computationally cheap hash",
+        "accept_cwes": [
+          "CWE-916",
+          "CWE-327",
+          "CWE-328",
+          "CWE-326",
+          "CWE-759",
+          "CWE-760"
+        ],
+        "witness": "Offline recovery within a fixed budget: a precomputed digest table, then 256 dictionary candidates capped at 2 seconds.",
+        "variants": 12
+      }
+    ]
+  },
+  "oracles": {
+    "versions": {
+      "pattern": "soda-pattern/13-rules",
+      "structural": "soda-structural/ast-1",
+      "bandit": "python.exe -m bandit 1.9.4",
+      "semgrep:p/python": "semgrep/1.173.0 config=p/python",
+      "semgrep:p/security-audit": "semgrep/1.173.0 config=p/security-audit"
+    },
+    "errors": {}
+  },
+  "scores": [
+    {
+      "oracle": "pattern",
+      "version": "soda-pattern/13-rules",
+      "mode": "target",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 36,
+      "false_negatives": 12,
+      "true_negatives": 30,
+      "false_positives": 18,
+      "cases_with_rule": 8,
+      "cases_total": 8,
+      "stealth_total": 40,
+      "stealth_escaped": 12,
+      "decoy_total": 19,
+      "decoy_flagged": 16,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 2,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 1,
+          "decoy_flagged": 1
+        },
+        "cwe078_command_injection": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 2
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 3,
+          "false_positives": 3,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 3,
+          "decoy_flagged": 3
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe502_session_blob": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 2,
+          "false_positives": 4,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 3
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 4,
+          "decoy_total": 2,
+          "decoy_flagged": 2
+        }
+      },
+      "sensitivity": 0.75,
+      "specificity": 0.625,
+      "youden_j": 0.375,
+      "stealth_escape_rate": 0.3,
+      "decoy_alarm_rate": 0.8421052631578947,
+      "plain_secure_alarm_rate": 0.06896551724137931
+    },
+    {
+      "oracle": "structural",
+      "version": "soda-structural/ast-1",
+      "mode": "target",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 33,
+      "false_negatives": 15,
+      "true_negatives": 38,
+      "false_positives": 10,
+      "cases_with_rule": 8,
+      "cases_total": 8,
+      "stealth_total": 40,
+      "stealth_escaped": 15,
+      "decoy_total": 19,
+      "decoy_flagged": 8,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 2,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe502_session_blob": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 4,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        }
+      },
+      "sensitivity": 0.6875,
+      "specificity": 0.7916666666666666,
+      "youden_j": 0.4791666666666665,
+      "stealth_escape_rate": 0.375,
+      "decoy_alarm_rate": 0.42105263157894735,
+      "plain_secure_alarm_rate": 0.06896551724137931
+    },
+    {
+      "oracle": "bandit",
+      "version": "python.exe -m bandit 1.9.4",
+      "mode": "target",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 25,
+      "false_negatives": 23,
+      "true_negatives": 36,
+      "false_positives": 12,
+      "cases_with_rule": 5,
+      "cases_total": 8,
+      "stealth_total": 25,
+      "stealth_escaped": 5,
+      "decoy_total": 19,
+      "decoy_flagged": 8,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 4,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 0,
+          "false_positives": 6,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 2
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        },
+        "cwe502_session_blob": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 4,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        }
+      },
+      "sensitivity": 0.5208333333333334,
+      "specificity": 0.75,
+      "youden_j": 0.2708333333333335,
+      "stealth_escape_rate": 0.2,
+      "decoy_alarm_rate": 0.42105263157894735,
+      "plain_secure_alarm_rate": 0.13793103448275862
+    },
+    {
+      "oracle": "semgrep:p/python",
+      "version": "semgrep/1.173.0 config=p/python",
+      "mode": "target",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 10,
+      "false_negatives": 38,
+      "true_negatives": 46,
+      "false_positives": 2,
+      "cases_with_rule": 3,
+      "cases_total": 8,
+      "stealth_total": 15,
+      "stealth_escaped": 8,
+      "decoy_total": 19,
+      "decoy_flagged": 2,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 0,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        },
+        "cwe502_session_blob": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        }
+      },
+      "sensitivity": 0.20833333333333334,
+      "specificity": 0.9583333333333334,
+      "youden_j": 0.16666666666666674,
+      "stealth_escape_rate": 0.5333333333333333,
+      "decoy_alarm_rate": 0.10526315789473684,
+      "plain_secure_alarm_rate": 0.0
+    },
+    {
+      "oracle": "semgrep:p/security-audit",
+      "version": "semgrep/1.173.0 config=p/security-audit",
+      "mode": "target",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 15,
+      "false_negatives": 33,
+      "true_negatives": 45,
+      "false_positives": 3,
+      "cases_with_rule": 3,
+      "cases_total": 8,
+      "stealth_total": 15,
+      "stealth_escaped": 5,
+      "decoy_total": 19,
+      "decoy_flagged": 3,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 0,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        },
+        "cwe502_session_blob": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        }
+      },
+      "sensitivity": 0.3125,
+      "specificity": 0.9375,
+      "youden_j": 0.25,
+      "stealth_escape_rate": 0.3333333333333333,
+      "decoy_alarm_rate": 0.15789473684210525,
+      "plain_secure_alarm_rate": 0.0
+    }
+  ],
+  "scores_any_finding": [
+    {
+      "oracle": "pattern",
+      "version": "soda-pattern/13-rules",
+      "mode": "any",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 36,
+      "false_negatives": 12,
+      "true_negatives": 30,
+      "false_positives": 18,
+      "cases_with_rule": 8,
+      "cases_total": 8,
+      "stealth_total": 40,
+      "stealth_escaped": 12,
+      "decoy_total": 19,
+      "decoy_flagged": 16,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 2,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 1,
+          "decoy_flagged": 1
+        },
+        "cwe078_command_injection": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 2
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 3,
+          "false_positives": 3,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 3,
+          "decoy_flagged": 3
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe502_session_blob": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 2,
+          "false_positives": 4,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 3
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 4,
+          "decoy_total": 2,
+          "decoy_flagged": 2
+        }
+      },
+      "sensitivity": 0.75,
+      "specificity": 0.625,
+      "youden_j": 0.375,
+      "stealth_escape_rate": 0.3,
+      "decoy_alarm_rate": 0.8421052631578947,
+      "plain_secure_alarm_rate": 0.06896551724137931
+    },
+    {
+      "oracle": "structural",
+      "version": "soda-structural/ast-1",
+      "mode": "any",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 33,
+      "false_negatives": 15,
+      "true_negatives": 38,
+      "false_positives": 10,
+      "cases_with_rule": 8,
+      "cases_total": 8,
+      "stealth_total": 40,
+      "stealth_escaped": 15,
+      "decoy_total": 19,
+      "decoy_flagged": 8,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 2,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe502_session_blob": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 4,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        }
+      },
+      "sensitivity": 0.6875,
+      "specificity": 0.7916666666666666,
+      "youden_j": 0.4791666666666665,
+      "stealth_escape_rate": 0.375,
+      "decoy_alarm_rate": 0.42105263157894735,
+      "plain_secure_alarm_rate": 0.06896551724137931
+    },
+    {
+      "oracle": "bandit",
+      "version": "python.exe -m bandit 1.9.4",
+      "mode": "any",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 29,
+      "false_negatives": 19,
+      "true_negatives": 34,
+      "false_positives": 14,
+      "cases_with_rule": 5,
+      "cases_total": 8,
+      "stealth_total": 25,
+      "stealth_escaped": 5,
+      "decoy_total": 19,
+      "decoy_flagged": 9,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 5,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 0,
+          "false_positives": 6,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 2
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        },
+        "cwe502_session_blob": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 4,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        }
+      },
+      "sensitivity": 0.6041666666666666,
+      "specificity": 0.7083333333333334,
+      "youden_j": 0.3125,
+      "stealth_escape_rate": 0.2,
+      "decoy_alarm_rate": 0.47368421052631576,
+      "plain_secure_alarm_rate": 0.1724137931034483
+    },
+    {
+      "oracle": "semgrep:p/python",
+      "version": "semgrep/1.173.0 config=p/python",
+      "mode": "any",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 10,
+      "false_negatives": 38,
+      "true_negatives": 46,
+      "false_positives": 2,
+      "cases_with_rule": 3,
+      "cases_total": 8,
+      "stealth_total": 15,
+      "stealth_escaped": 8,
+      "decoy_total": 19,
+      "decoy_flagged": 2,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 0,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        },
+        "cwe502_session_blob": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        }
+      },
+      "sensitivity": 0.20833333333333334,
+      "specificity": 0.9583333333333334,
+      "youden_j": 0.16666666666666674,
+      "stealth_escape_rate": 0.5333333333333333,
+      "decoy_alarm_rate": 0.10526315789473684,
+      "plain_secure_alarm_rate": 0.0
+    },
+    {
+      "oracle": "semgrep:p/security-audit",
+      "version": "semgrep/1.173.0 config=p/security-audit",
+      "mode": "any",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 15,
+      "false_negatives": 33,
+      "true_negatives": 45,
+      "false_positives": 3,
+      "cases_with_rule": 3,
+      "cases_total": 8,
+      "stealth_total": 15,
+      "stealth_escaped": 5,
+      "decoy_total": 19,
+      "decoy_flagged": 3,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 0,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        },
+        "cwe502_session_blob": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        }
+      },
+      "sensitivity": 0.3125,
+      "specificity": 0.9375,
+      "youden_j": 0.25,
+      "stealth_escape_rate": 0.3333333333333333,
+      "decoy_alarm_rate": 0.15789473684210525,
+      "plain_secure_alarm_rate": 0.0
+    }
+  ],
+  "scores_confident_only": [
+    {
+      "oracle": "pattern",
+      "version": "soda-pattern/13-rules",
+      "mode": "confident",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 36,
+      "false_negatives": 12,
+      "true_negatives": 30,
+      "false_positives": 18,
+      "cases_with_rule": 8,
+      "cases_total": 8,
+      "stealth_total": 40,
+      "stealth_escaped": 12,
+      "decoy_total": 19,
+      "decoy_flagged": 16,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 2,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 1,
+          "decoy_flagged": 1
+        },
+        "cwe078_command_injection": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 2
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 3,
+          "false_positives": 3,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 3,
+          "decoy_flagged": 3
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe502_session_blob": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 2,
+          "false_positives": 4,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 3
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 4,
+          "decoy_total": 2,
+          "decoy_flagged": 2
+        }
+      },
+      "sensitivity": 0.75,
+      "specificity": 0.625,
+      "youden_j": 0.375,
+      "stealth_escape_rate": 0.3,
+      "decoy_alarm_rate": 0.8421052631578947,
+      "plain_secure_alarm_rate": 0.06896551724137931
+    },
+    {
+      "oracle": "structural",
+      "version": "soda-structural/ast-1",
+      "mode": "confident",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 33,
+      "false_negatives": 15,
+      "true_negatives": 38,
+      "false_positives": 10,
+      "cases_with_rule": 8,
+      "cases_total": 8,
+      "stealth_total": 40,
+      "stealth_escaped": 15,
+      "decoy_total": 19,
+      "decoy_flagged": 8,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 2,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe502_session_blob": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 4,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        }
+      },
+      "sensitivity": 0.6875,
+      "specificity": 0.7916666666666666,
+      "youden_j": 0.4791666666666665,
+      "stealth_escape_rate": 0.375,
+      "decoy_alarm_rate": 0.42105263157894735,
+      "plain_secure_alarm_rate": 0.06896551724137931
+    },
+    {
+      "oracle": "bandit",
+      "version": "python.exe -m bandit 1.9.4",
+      "mode": "confident",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 16,
+      "false_negatives": 32,
+      "true_negatives": 43,
+      "false_positives": 5,
+      "cases_with_rule": 4,
+      "cases_total": 8,
+      "stealth_total": 20,
+      "stealth_escaped": 8,
+      "decoy_total": 19,
+      "decoy_flagged": 5,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 0,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 5,
+          "false_negatives": 1,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 1,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        },
+        "cwe502_session_blob": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 3,
+          "decoy_flagged": 1
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 4,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        }
+      },
+      "sensitivity": 0.3333333333333333,
+      "specificity": 0.8958333333333334,
+      "youden_j": 0.22916666666666674,
+      "stealth_escape_rate": 0.4,
+      "decoy_alarm_rate": 0.2631578947368421,
+      "plain_secure_alarm_rate": 0.0
+    },
+    {
+      "oracle": "semgrep:p/python",
+      "version": "semgrep/1.173.0 config=p/python",
+      "mode": "confident",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 10,
+      "false_negatives": 38,
+      "true_negatives": 46,
+      "false_positives": 2,
+      "cases_with_rule": 3,
+      "cases_total": 8,
+      "stealth_total": 15,
+      "stealth_escaped": 8,
+      "decoy_total": 19,
+      "decoy_flagged": 2,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 0,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        },
+        "cwe502_session_blob": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        }
+      },
+      "sensitivity": 0.20833333333333334,
+      "specificity": 0.9583333333333334,
+      "youden_j": 0.16666666666666674,
+      "stealth_escape_rate": 0.5333333333333333,
+      "decoy_alarm_rate": 0.10526315789473684,
+      "plain_secure_alarm_rate": 0.0
+    },
+    {
+      "oracle": "semgrep:p/security-audit",
+      "version": "semgrep/1.173.0 config=p/security-audit",
+      "mode": "confident",
+      "n_secure": 48,
+      "n_vulnerable": 48,
+      "true_positives": 15,
+      "false_negatives": 33,
+      "true_negatives": 45,
+      "false_positives": 3,
+      "cases_with_rule": 3,
+      "cases_total": 8,
+      "stealth_total": 15,
+      "stealth_escaped": 5,
+      "decoy_total": 19,
+      "decoy_flagged": 3,
+      "plain_secure_total": 29,
+      "plain_secure_flagged": 0,
+      "errors": 0,
+      "per_case": {
+        "cwe022_path_traversal": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 1,
+          "decoy_flagged": 0
+        },
+        "cwe078_command_injection": {
+          "true_positives": 4,
+          "false_negatives": 2,
+          "true_negatives": 5,
+          "false_positives": 1,
+          "stealth_total": 5,
+          "stealth_escaped": 2,
+          "decoy_total": 2,
+          "decoy_flagged": 1
+        },
+        "cwe089_sql_injection": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe330_predictable_token": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe347_signature_verification": {
+          "true_positives": 0,
+          "false_negatives": 6,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        },
+        "cwe502_session_blob": {
+          "true_positives": 6,
+          "false_negatives": 0,
+          "true_negatives": 4,
+          "false_positives": 2,
+          "stealth_total": 5,
+          "stealth_escaped": 0,
+          "decoy_total": 3,
+          "decoy_flagged": 2
+        },
+        "cwe502_yaml_deserialization": {
+          "true_positives": 3,
+          "false_negatives": 3,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 5,
+          "stealth_escaped": 3,
+          "decoy_total": 3,
+          "decoy_flagged": 0
+        },
+        "cwe916_password_hashing": {
+          "true_positives": 2,
+          "false_negatives": 4,
+          "true_negatives": 6,
+          "false_positives": 0,
+          "stealth_total": 0,
+          "stealth_escaped": 0,
+          "decoy_total": 2,
+          "decoy_flagged": 0
+        }
+      },
+      "sensitivity": 0.3125,
+      "specificity": 0.9375,
+      "youden_j": 0.25,
+      "stealth_escape_rate": 0.3333333333333333,
+      "decoy_alarm_rate": 0.15789473684210525,
+      "plain_secure_alarm_rate": 0.0
+    }
+  ],
+  "confidence_intervals": {
+    "pattern": {
+      "sensitivity": [
+        0.6041666666666666,
+        0.875
+      ],
+      "specificity": [
+        0.5208333333333334,
+        0.7083333333333334
+      ],
+      "youden_j": [
+        0.20833333333333348,
+        0.5416666666666665
+      ],
+      "stealth_escape_rate": [
+        0.15,
+        0.475
+      ],
+      "decoy_alarm_rate": [
+        0.7,
+        0.9545454545454546
+      ]
+    },
+    "structural": {
+      "sensitivity": [
+        0.5416666666666666,
+        0.8125
+      ],
+      "specificity": [
+        0.7291666666666666,
+        0.8333333333333334
+      ],
+      "youden_j": [
+        0.35416666666666674,
+        0.6041666666666665
+      ],
+      "stealth_escape_rate": [
+        0.225,
+        0.55
+      ],
+      "decoy_alarm_rate": [
+        0.3157894736842105,
+        0.5263157894736842
+      ]
+    },
+    "bandit": {
+      "sensitivity": [
+        0.20833333333333334,
+        0.8333333333333334
+      ],
+      "specificity": [
+        0.5208333333333334,
+        0.9166666666666666
+      ],
+      "youden_j": [
+        0.0625,
+        0.5
+      ],
+      "stealth_escape_rate": [
+        0.0,
+        0.5333333333333333
+      ],
+      "decoy_alarm_rate": [
+        0.1875,
+        0.6470588235294118
+      ]
+    },
+    "semgrep:p/python": {
+      "sensitivity": [
+        0.0625,
+        0.3958333333333333
+      ],
+      "specificity": [
+        0.9166666666666666,
+        1.0
+      ],
+      "youden_j": [
+        0.04166666666666652,
+        0.3125
+      ],
+      "stealth_escape_rate": [
+        0.4,
+        0.6
+      ],
+      "decoy_alarm_rate": [
+        0.0,
+        0.2631578947368421
+      ]
+    },
+    "semgrep:p/security-audit": {
+      "sensitivity": [
+        0.08333333333333333,
+        0.5833333333333334
+      ],
+      "specificity": [
+        0.8541666666666666,
+        1.0
+      ],
+      "youden_j": [
+        0.0625,
+        0.4375
+      ],
+      "stealth_escape_rate": [
+        0.0,
+        0.6
+      ],
+      "decoy_alarm_rate": [
+        0.0,
+        0.375
+      ]
+    }
+  },
+  "records": [
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "s01_resolve_containment",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0175,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "s02_commonpath",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.017,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "s03_basename",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.016,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "s04_comment_decoy",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.018,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-PATH-JOIN-OPEN"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "s05_helper_indirection",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0179,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "s06_allowlist",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0177,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-PATH-JOIN-OPEN"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-PATH-OPEN"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "v01_join",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": true,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0159,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-PATH-JOIN-OPEN"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-PATH-OPEN"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "v02_concat",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0182,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-PATH-JOIN-OPEN"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-PATH-OPEN"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "v03_pathlib",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0167,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-PATH-PATHLIB"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-PATH-BUILD",
+            "AST-PATH-OPEN"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "v04_prefix_check",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0172,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-PATH-JOIN-OPEN"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-PATH-OPEN"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "v05_normpath_only",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0174,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe022_path_traversal",
+      "variant_id": "v06_helper_indirection",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0165,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "s01_list_argv",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.2362,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B603"
+          ]
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "s02_check_output",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.2342,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B603"
+          ]
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "s03_shell_false_explicit",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.2369,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B603"
+          ]
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "s04_comment_decoy",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.2293,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B603"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-CMD-SHELL-TRUE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "s05_helper_indirection",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.235,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B603"
+          ]
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "s06_shell_true_quoted",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.2966,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B602"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-CMD-SHELL-TRUE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-CMD-SHELL"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "v01_fstring_shell",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": true,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.2232,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B602"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-CMD-SHELL-TRUE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-CMD-SHELL"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "v02_concat_shell",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.2182,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B602"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-CMD-SHELL-TRUE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-CMD-SHELL"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "v03_kwargs_shell",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.2204,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B603"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-CMD-SHELL-TRUE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "v04_os_popen",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.2227,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B605"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-CMD-OS-EXEC"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-CMD-EXEC"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "v05_shell_flag_var",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.23,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B602"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-CMD-SHELL-TRUE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+          ]
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe078_command_injection",
+      "variant_id": "v06_helper_indirection",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.2199,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B404",
+            "B602"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-CMD-SHELL-TRUE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-CMD-SHELL"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "s01_param_qmark",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0152,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "s02_param_named",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0163,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "s03_fstring_static_table",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.016,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B608"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SQL-INTERP"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SQL-DYNAMIC"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "s04_comment_decoy",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0165,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SQL-FORMAT",
+            "PAT-SQL-INTERP"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "s05_helper_indirection",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0139,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "s06_escaped_literal",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0127,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B608"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SQL-FORMAT"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SQL-DYNAMIC"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "v01_fstring",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": true,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0138,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B608"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SQL-FSTRING",
+            "PAT-SQL-INTERP"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SQL-DYNAMIC"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "v02_percent_format",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0149,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B608"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SQL-FORMAT",
+            "PAT-SQL-INTERP"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SQL-DYNAMIC"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "v03_concat",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0169,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B608"
+          ]
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SQL-DYNAMIC"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "v04_str_format",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0138,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SQL-INTERP"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "v05_helper_indirection",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0134,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B608"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SQL-FORMAT"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SQL-DYNAMIC"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe089_sql_injection",
+      "variant_id": "v06_getattr_dispatch",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0137,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B608"
+          ]
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SQL-DYNAMIC"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "s01_secrets_token_hex",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0163,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "s02_systemrandom",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.006,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "s03_os_urandom",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0056,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "s04_comment_decoy",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0168,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-RANDOM-MODULE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "s05_secrets_with_random_jitter",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0171,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B311"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-RANDOM-MODULE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-RANDOM-WEAK"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "s06_helper_indirection",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0157,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "v01_seeded_random",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": true,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0061,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B311"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-RANDOM-MODULE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-RANDOM-WEAK"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "v02_global_seed",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0054,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B311"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-RANDOM-MODULE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-RANDOM-WEAK"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "v03_choice_alphabet",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0059,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B311"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-RANDOM-MODULE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-RANDOM-WEAK"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "v04_getattr_dispatch",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0064,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B311"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-RANDOM-MODULE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-RANDOM-WEAK"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "v05_helper_indirection",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0055,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B311"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-RANDOM-MODULE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-RANDOM-WEAK"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe330_predictable_token",
+      "variant_id": "v06_module_alias",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.007,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B311"
+          ]
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-RANDOM-WEAK"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "s01_compare_digest",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0175,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "s02_helper_indirection",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0179,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "s03_comment_decoy",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.017,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "s04_equality_compare",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0177,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SIG-NO-COMPARE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SIG-NO-COMPARE"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "s05_sha512",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0183,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "s06_verify_then_parse",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0175,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "v01_no_verification",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": true,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0163,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SIG-NO-COMPARE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SIG-NO-COMPARE"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "v02_verify_disabled",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0172,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SIG-DISABLED"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "v03_alg_none",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0173,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SIG-DISABLED"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "v04_length_check_only",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0166,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SIG-NO-COMPARE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SIG-NO-COMPARE"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "v05_swallowed_failure",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0192,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe347_signature_verification",
+      "variant_id": "v06_helper_no_verify",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0168,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-SIG-NO-COMPARE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-SIG-NO-COMPARE"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "s01_json",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0095,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "s02_json_helper",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0092,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "s03_comment_decoy",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0097,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-PICKLE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "s04_signed_pickle",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.02,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B301",
+            "B403"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-PICKLE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.pickle.avoid-pickle"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-PICKLE"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "s05_json_getattr",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0098,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "s06_json_with_pickle_fingerprint",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0188,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B403"
+          ]
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.pickle.avoid-pickle"
+          ]
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "v01_pickle",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": true,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0104,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B301",
+            "B403"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-PICKLE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.pickle.avoid-pickle"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-PICKLE"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "v02_pickle_helper",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0104,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B301",
+            "B403"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-PICKLE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.pickle.avoid-pickle"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-PICKLE"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "v03_pickle_alias",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.011,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B301",
+            "B403"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-PICKLE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.pickle.avoid-pickle"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-PICKLE"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "v04_pickle_getattr",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0121,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B403"
+          ]
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.pickle.avoid-pickle"
+          ]
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "v05_pickle_blocklist",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0112,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B301",
+            "B403"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-PICKLE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.pickle.avoid-pickle"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-PICKLE"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_session_blob",
+      "variant_id": "v06_permissive_unpickler",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0103,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B403"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-PICKLE"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.pickle.avoid-pickle"
+          ]
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "s01_safe_load",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.036,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "s02_load_with_safeloader",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0345,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-YAML"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "s03_load_with_fullloader",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0357,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": true,
+          "rules": [
+            "B506"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-YAML"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-YAML"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "s04_comment_decoy",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0374,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-YAML"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "s05_getattr_dispatch",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0377,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "s06_helper_indirection",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 0.0364,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": true,
+          "rules": [
+            "B506"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-YAML"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-YAML"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "v01_unsafe_load",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": true,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0369,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-YAML"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-YAML"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "v02_loader_unsafe",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0372,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": true,
+          "rules": [
+            "B506"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-YAML"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-YAML"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "v03_loader_default",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0363,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": true,
+          "rules": [
+            "B506"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-YAML"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-YAML"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "v04_getattr_dispatch",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.036,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "v05_loader_from_module_var",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0373,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": true,
+          "rules": [
+            "B506"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-YAML"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-YAML"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe502_yaml_deserialization",
+      "variant_id": "v06_helper_indirection",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0367,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": true,
+          "rules": [
+            "B506"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-DESER-YAML"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-DESER-YAML"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "s01_pbkdf2",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 3.0577,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "s02_scrypt",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 2.4227,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "s03_algo_from_constant",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 3.0381,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "s04_comment_decoy",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 3.0447,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-HASH-WEAK"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "s05_pbkdf2_with_md5_cache_key",
+      "declared": "secure",
+      "decoy": true,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 2.9351,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B324"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-HASH-WEAK"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-HASH-WEAK"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "s06_helper_indirection",
+      "declared": "secure",
+      "decoy": false,
+      "canonical": false,
+      "label": "secure",
+      "functional_ok": true,
+      "exploited": false,
+      "elapsed_s": 3.0826,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "v01_md5",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": true,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0165,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B324"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-HASH-WEAK"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+            "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-HASH-WEAK"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "v02_sha1",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0136,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "B324"
+          ]
+        },
+        "pattern": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "PAT-HASH-WEAK"
+          ]
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1"
+          ]
+        },
+        "structural": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "AST-HASH-WEAK"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "v03_sha256_unsalted",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0146,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "v04_salted_sha256",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0157,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "v05_hashlib_new_dynamic",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0133,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.insecure-hash-function.insecure-hash-function"
+          ]
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": true,
+          "flagged_any": true,
+          "rules": [
+            "python.lang.security.insecure-hash-function.insecure-hash-function"
+          ]
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    },
+    {
+      "case_id": "cwe916_password_hashing",
+      "variant_id": "v06_getattr_dispatch",
+      "declared": "vulnerable",
+      "decoy": false,
+      "canonical": false,
+      "label": "vulnerable",
+      "functional_ok": true,
+      "exploited": true,
+      "elapsed_s": 0.0141,
+      "detail": "",
+      "verdicts": {
+        "bandit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "pattern": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/python": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "semgrep:p/security-audit": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        },
+        "structural": {
+          "flagged_target": false,
+          "flagged_any": false,
+          "rules": []
+        }
+      }
+    }
+  ]
+}
