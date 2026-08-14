@@ -206,6 +206,49 @@ explicitly.
   measurement instrument, not a sample of real-world code, and no rate here
   should be read as an estimate of how often this happens in the wild.
 
+## 7bis. The production study
+
+Added after the controlled study was complete and published. Its collection
+rules and its statistics were fixed before any oracle was run against real code;
+the controlled study's results were already known, which is a form of prior
+knowledge that no protocol can undo, so the design deliberately leans on the one
+statistic that is hard to steer.
+
+**Unit of observation.** One Python file at two revisions: the parent of a
+security fix commit, and the fix. The label is external — a reviewed GitHub
+advisory says the project had a weakness of a given class, and the maintainer's
+commit is the repair.
+
+**Inclusion, fixed in advance.** Reviewed advisories, PyPI ecosystem, in the
+seven classes of §4. One fix commit per advisory; duplicates across advisories
+dropped. Single-parent commits only. Modified `.py` files only, excluding tests,
+`version.py` and `conftest.py`. Commits touching more than four such files are
+dropped entirely. `solo` marks commits that left exactly one such file.
+
+**Statistics.**
+
+- **Detection rate** — pre-fix files where the oracle raised the class. Reported
+  as a *floor*, because a fix commit may touch files that never carried the bug,
+  and reported again over the `solo` subset.
+- **Fix blindness** *(the headline)* — pairs where the verdict is identical
+  before and after. This is the statistic the design leans on, because it needs
+  no assumption about which file carried the bug: only that the commit repaired
+  something, which the advisory attests. It is split into `silent throughout`
+  and `flagged throughout`, because only the first is unambiguous.
+- **Reversed** — the oracle flagged only the fixed revision. Counted separately
+  and never folded into anything else.
+
+**Cross-study comparison.** Whether the controlled corpus predicts the real
+per-class picture, by coverage agreement and Spearman correlation over shared
+`(oracle, class)` cells with at least four real pairs. The pre-declared reading:
+if the corpus scored the tools *below* their real performance, it would be
+evidence that the mutations were adversarially chosen. `soda production compare`
+computes it; the direction is reported whichever way it falls.
+
+**What is not redistributed.** Fetched revisions stay out of the repository —
+they are third-party code under their own licences. The manifest identifies them,
+`manifest_sha256` pins the set, and `soda production fetch` rebuilds the cache.
+
 ## 8. Reproducing a result
 
 ```

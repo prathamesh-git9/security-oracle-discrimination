@@ -8,6 +8,7 @@ labels it rests on continue to hold.
 
 from __future__ import annotations
 
+import json
 import math
 from pathlib import Path
 from typing import Annotated
@@ -29,6 +30,10 @@ _DEFAULT_CORPUS_ROOT = default_corpus_root()
 app = typer.Typer(
     help="Audit security oracles against behaviour established by execution.",
 )
+production_app = typer.Typer(
+    help="Audit security oracles against paired files from real CVE fixes.",
+)
+app.add_typer(production_app, name="production")
 
 
 def _progress(message: str) -> None:
@@ -39,6 +44,159 @@ def _rate(value: object) -> str:
     if isinstance(value, (int, float)) and math.isfinite(value):
         return f"{value:.3f}"
     return "n/a"
+
+
+def _percentage_rate(value: object) -> str:
+    if isinstance(value, (int, float)) and math.isfinite(value):
+        return f"{value * 100:.1f}%"
+    return "n/a"
+
+
+@production_app.command("build")
+def production_build_command(
+    per_cwe: Annotated[
+        int,
+        typer.Option(
+            "--per-cwe",
+            help="Maximum advisories to collect for each covered CWE.",
+        ),
+    ] = 60,
+    max_py_files: Annotated[
+        int,
+        typer.Option(
+            "--max-py-files",
+            help="Maximum modified Python files allowed in one fix commit.",
+        ),
+    ] = 4,
+    out: Annotated[
+        Path,
+        typer.Option(
+            "--out",
+            help="Path for the collected pair manifest.",
+        ),
+    ] = Path("production/manifest.json"),
+) -> None:
+    """Build a reviewed-advisory manifest by querying the GitHub API."""
+    from .production import collect
+
+    pairs = collect.build_manifest(
+        per_cwe=per_cwe,
+        max_py_files=max_py_files,
+    )
+    collect.write_manifest(pairs, out)
+
+    advisories = {pair.ghsa for pair in pairs}
+    repositories = {pair.repo for pair in pairs}
+    by_cwe: dict[str, int] = {}
+    for pair in pairs:
+        for cwe in pair.cwes:
+            by_cwe[cwe] = by_cwe.get(cwe, 0) + 1
+
+    typer.echo(f"pairs: {len(pairs)}")
+    typer.echo(f"advisories: {len(advisories)}")
+    typer.echo(f"repositories: {len(repositories)}")
+    breakdown = ", ".join(
+        f"{cwe}={count}" for cwe, count in sorted(by_cwe.items())
+    )
+    typer.echo(f"per-class breakdown: {breakdown or 'none'}")
+
+
+@production_app.command("fetch")
+def production_fetch_command(
+    manifest: Annotated[
+        Path,
+        typer.Option(
+            "--manifest",
+            help="Path to the collected pair manifest.",
+        ),
+    ] = Path("production/manifest.json"),
+    cache: Annotated[
+        Path,
+        typer.Option(
+            "--cache",
+            help="Directory for cached vulnerable and fixed source files.",
+        ),
+    ] = Path("production/cache"),
+) -> None:
+    """Fetch manifest pairs into the local cache with progress on stderr."""
+    from .production import collect
+
+    pairs = collect.load_manifest(manifest)
+    fetched = collect.fetch_all(pairs, cache, progress=_progress)
+    typer.echo(f"pairs fetched: {len(fetched)}")
+    typer.echo(f"pairs skipped: {max(0, len(pairs) - len(fetched))}")
+
+
+@production_app.command("audit")
+def production_audit_command(
+    manifest: Annotated[
+        Path,
+        typer.Option(
+            "--manifest",
+            help="Path to the collected pair manifest.",
+        ),
+    ] = Path("production/manifest.json"),
+    cache: Annotated[
+        Path,
+        typer.Option(
+            "--cache",
+            help="Directory for cached vulnerable and fixed source files.",
+        ),
+    ] = Path("production/cache"),
+    out: Annotated[
+        Path,
+        typer.Option(
+            "--out",
+            help="Path for the machine-readable production results.",
+        ),
+    ] = Path("results/production.json"),
+    markdown: Annotated[
+        Path,
+        typer.Option(
+            "--markdown",
+            help="Path for the human-readable production report.",
+        ),
+    ] = Path("results/PRODUCTION.md"),
+    no_external: Annotated[
+        bool,
+        typer.Option(
+            "--no-external",
+            help="Skip the Bandit and Semgrep external analysers.",
+        ),
+    ] = False,
+) -> None:
+    """Audit cached real fixes, fetching any missing pairs first."""
+    from .production import collect
+    from .production.audit import run_production_audit
+    from .production.report import render_markdown
+
+    pairs = collect.load_manifest(manifest)
+    fetched = collect.fetch_all(pairs, cache, progress=_progress)
+    oracles = build_oracles(include_external=not no_external)
+    results = run_production_audit(
+        fetched,
+        oracles=oracles,
+        progress=_progress,
+    )
+    write_results(results, out)
+    _progress(f"wrote JSON results to {out}")
+
+    markdown.parent.mkdir(parents=True, exist_ok=True)
+    markdown.write_text(render_markdown(results), encoding="utf-8")
+    _progress(f"wrote Markdown report to {markdown}")
+
+    scores = {
+        score.get("oracle"): score
+        for score in results.get("scores", [])
+        if isinstance(score, dict)
+    }
+    for oracle in oracles:
+        score = scores.get(oracle.name, {})
+        typer.echo(
+            f"{oracle.name}: "
+            f"detection_rate={_percentage_rate(score.get('detection_rate'))} "
+            f"fix_blind_rate={_percentage_rate(score.get('fix_blind_rate'))}"
+        )
 
 
 @app.command("audit")
@@ -204,6 +362,55 @@ def check_command(
     typer.echo(f"corpus fingerprint: {fingerprint}")
     if problems:
         raise typer.Exit(code=1)
+
+
+@production_app.command("compare")
+def production_compare_command(
+    corpus_results: Annotated[
+        Path,
+        typer.Option(
+            "--corpus-results",
+            help="Results file from the synthetic corpus audit.",
+        ),
+    ] = Path("results/audit.json"),
+    production_results: Annotated[
+        Path,
+        typer.Option(
+            "--production-results",
+            help="Results file from the production audit.",
+        ),
+    ] = Path("results/production.json"),
+    out: Annotated[
+        Path,
+        typer.Option("--out", help="Path for the machine-readable comparison."),
+    ] = Path("results/cross-study.json"),
+    markdown: Annotated[
+        Path,
+        typer.Option("--markdown", help="Path for the human-readable comparison."),
+    ] = Path("results/CROSS_STUDY.md"),
+) -> None:
+    """Test whether the hand-built corpus predicts behaviour on real CVEs."""
+    from .production import crossstudy
+
+    corpus_data = json.loads(corpus_results.read_text(encoding="utf-8"))
+    production_data = json.loads(production_results.read_text(encoding="utf-8"))
+    comparison = crossstudy.compare(corpus_data, production_data)
+
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(comparison, indent=2) + "\n", encoding="utf-8")
+    markdown.parent.mkdir(parents=True, exist_ok=True)
+    markdown.write_text(crossstudy.render_markdown(comparison), encoding="utf-8")
+
+    coverage = comparison.get("coverage_agreement", {})
+    typer.echo(f"wrote {out}")
+    typer.echo(f"wrote {markdown}")
+    typer.echo(f"cells compared: {comparison.get('cells_compared', 0)}")
+    typer.echo(
+        f"coverage agreement: {coverage.get('agreed', 0)}"
+        f"/{comparison.get('cells_compared', 0)}"
+        f" ({coverage.get('rate', float('nan')) * 100:.0f}%)"
+    )
+    typer.echo(f"spearman rho: {comparison.get('spearman_rho', float('nan')):+.3f}")
 
 
 @app.command("oracles")

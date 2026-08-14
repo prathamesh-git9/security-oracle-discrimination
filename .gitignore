@@ -9,3 +9,8 @@ dist/
 .ruff_cache/
 .semgrep/
 .DS_Store
+
+# Fetched third-party source for the production study. This is other people's
+# code under their own licences: the repository ships provenance (the manifest)
+# and results, never the code itself. Re-create it with `soda production fetch`.
+production/cache/

@@ -32,6 +32,13 @@ Neither loosening the scoring rule (count any finding) nor tightening it (count
 only confident findings) rescued the picture: all three variants of the analysis
 sit in a band from J = +0.167 to +0.479.
 
+**A second study, on code nobody here wrote**, takes 140 real fixes to real CVEs
+across 65 real projects and asks whether each oracle's verdict changed when the
+weakness was actually repaired. It did not, for **92.9% to 98.6%** of them. And
+the hand-built corpus turns out to *predict* the real per-class picture (Spearman
+ρ = +0.782, 83% agreement on coverage) while scoring the tools **higher** than
+reality does in 19 of 30 cells — so the corpus is, if anything, too easy.
+
 ## 2. The problem, and why it is not already solved
 
 That security oracles are weak is not a new observation. The 2026 SoK on AI
@@ -242,6 +249,106 @@ anyone using bandit as an oracle — *and* it costs elsewhere: the same restrict
 drops bandit's overall sensitivity from 52.1% to 33.3% and doubles its stealth
 escape rate from 20% to 40%.
 
+## 4bis. The production study: 140 real CVE fixes in 65 projects
+
+Everything above rests on a corpus its author also designed. That objection
+cannot be answered from inside the corpus, so it is answered from outside it.
+
+**Construction.** For every reviewed GitHub advisory affecting a PyPI package in
+the seven covered weakness classes, we take the maintainer's own fix commit and
+form one **pair** per Python file it modified: the file at the parent revision,
+and the file at the fix. Merge commits are excluded (no single "before"). Tests,
+`version.py` and `conftest.py` are excluded. Commits touching more than four such
+files are excluded, because a release blob is not a fix. Nothing about which CVEs
+exist, which projects they hit, or how they were repaired was chosen by us.
+
+The result: **140 pairs, 102 advisories, 65 repositories**, of which 77 come from
+commits that modified exactly one non-test Python file — the `solo` subset, where
+the changed file is almost certainly the one that was wrong.
+
+**Detection is low, and it is a floor.**
+
+| Oracle | Detected pre-fix file | `solo` subset |
+|---|---|---|
+| `bandit` | 29.3% (41/140) | 37.7% (29/77) |
+| `structural` | 29.3% (41/140) | 40.3% (31/77) |
+| `pattern` | 27.1% (38/140) | 35.1% (27/77) |
+| `semgrep p/security-audit` | 7.9% (11/140) | 14.3% (11/77) |
+| `semgrep p/python` | 4.3% (6/140) | 6.5% (5/77) |
+
+These are floors because a fix commit may touch files that never carried the bug.
+Using the synthetic study as a **coverage control** — restricting to classes where
+that oracle demonstrably had a working rule — bandit reaches 46.4% (39/84) and the
+rest stay below 30%.
+
+**The result that does not depend on file-level labels.**
+
+Each pair asks a paired question: *did the verdict change when the weakness was
+actually repaired?* This needs no assumption about which file carried the bug,
+only that the commit repaired something real — which is what the advisory
+attests.
+
+| Oracle | caught and cleared | silent throughout | flagged throughout | reversed | fix-blind |
+|---|---|---|---|---|---|
+| `pattern` | 9 | 101 | 29 | 1 | **92.9%** |
+| `bandit` | 6 | 99 | 35 | 0 | **95.7%** |
+| `structural` | 5 | 99 | 36 | 0 | **96.4%** |
+| `semgrep p/python` | 3 | 134 | 3 | 0 | **97.9%** |
+| `semgrep p/security-audit` | 2 | 129 | 9 | 0 | **98.6%** |
+
+Between 130 and 138 of 140 real security fixes produced **no change at all** in
+the oracle's verdict. The dominant cell is `silent throughout`: the tool had
+nothing to say about either revision. One case is `reversed` — the `pattern`
+oracle flagged only `HKUDS/LightRAG`'s *fixed* version of `lightrag/api/auth.py`.
+
+**37 of the 77 single-file fixes were missed by every oracle**, among them
+`matrix-org/synapse` `federation_base.py` (CWE-347), `apache/superset`
+`config.py` (CWE-89), `gitpython-developers/GitPython` `repo/base.py` (CWE-78),
+`ankitects/anki` `mediasrv.py` (CWE-22), `sybrenstuvel/python-rsa` `pkcs1.py` and
+`tlsfuzzer/python-ecdsa` `der.py` (CWE-347), `thumbor` `file_loader.py` (CWE-22)
+and `keras` `tfsm_layer.py` (CWE-502).
+
+By class, semgrep's two rulesets detected **0 of 35** real path-traversal pairs,
+**0 of 26** signature-verification pairs and **0 of 4** randomness pairs; bandit
+detected **0 of 26** signature-verification pairs.
+
+### Does the hand-built corpus predict reality?
+
+Over the 30 `(oracle, weakness class)` cells the two studies share, with at least
+four real pairs each:
+
+- **83%** agreement (25/30) on whether the oracle detects the class at all
+- Spearman **ρ = +0.782** between synthetic and real detection rates
+- the real rate is **lower** than the synthetic rate in **19 of 30** cells
+
+The third bullet is the one that answers the objection. A corpus written to
+embarrass these tools would score them below their real-world performance. This
+one scores them above it — the hand-written mutants are *easier* than what
+maintainers actually shipped. The corpus is not adversarial enough, not too
+adversarial.
+
+The disagreements are informative rather than awkward. Bandit detects nothing in
+the corpus's CWE-502 case but 43% of real CWE-502 pairs, because the corpus case
+is YAML — which bandit files under CWE-20, outside the accepted set — while many
+real advisories are pickle, which it files under CWE-502. The CWE-attribution
+problem of §4.5 reappearing in an independent dataset.
+
+### What the production study cannot support
+
+- **File-level labels are coarse.** A pre-fix file is "vulnerable" only in the
+  sense that a commit fixing a CVE of that class changed it. Detection rates are
+  floors; the `solo` subset narrows but does not eliminate this.
+- **`flagged throughout` is not always blindness.** A file can carry a second,
+  unrelated finding of the same class that legitimately survives the fix. Only
+  `silent throughout` is unambiguous, and it is the larger cell in every row.
+- **Advisory CWE labels are themselves imperfect**, assigned by humans under time
+  pressure, and an advisory often carries several. The accepted set is the union,
+  which is generous to the tools.
+- **Selection.** Only advisories whose fix commit is linked and public, in seven
+  classes, in Python. Nothing here estimates a population rate.
+- These are **the same tools in a different role**, not a claim that bandit or
+  semgrep is bad at code review.
+
 ## 5. What this means
 
 **For benchmark authors.** A reported "secure rate" carries the oracle's error
@@ -307,27 +414,46 @@ no oracle approached behavioural discrimination, and false alarms tracked form.
 In rough order of value:
 
 1. **Add CodeQL**, and an LLM-as-judge oracle. Both are used as benchmark ground
-   truth and neither is covered here.
+   truth and neither is covered here. This is now the single largest gap.
 2. **Re-score a published benchmark's model outputs** with a behavioural oracle
    and report how much the leaderboard moves. That converts this from a claim
    about oracles into a correction to a specific result.
-3. **Grow and diversify the corpus** — more classes, more languages, and
-   mutations generated by a procedure rather than by the author, to weaken the
-   internal-validity objection.
+3. **Sharpen the production labels.** Localise each fix to the changed hunk
+   rather than the changed file, so detection becomes an estimate rather than a
+   floor. The paired fix-blindness statistic already survives the coarse label;
+   detection does not.
 4. **Independent methodological review** before any claim of novelty is made in
    public. This is a hard gate in the parent research programme, and it has not
    been passed.
+
+Item 3 in the previous version of this list — *grow and diversify the corpus so
+the mutations are not all the author's* — has been superseded rather than
+completed. The production study reaches the same conclusion on 140 fixes nobody
+here wrote, and the cross-study comparison shows the hand-built corpus predicting
+the real per-class picture while being *easier* than it. Enlarging the synthetic
+corpus would no longer be the cheapest way to buy confidence.
 
 ## 8. Reproducing
 
 ```bash
 python -m venv .venv && .venv/bin/pip install -e ".[dev,oracles]"
+
+# controlled study
 soda check && soda truth && soda audit
+
+# production study (needs an authenticated `gh`)
+soda production build && soda production fetch && soda production audit
+soda production compare
 ```
 
-Results are comparable only when `environment.corpus_sha256` matches. The corpus
-is deliberately excluded from formatting tools: a variant's lexical form is the
-independent variable, and reformatting it silently changes the experiment.
+Results are comparable only when `environment.corpus_sha256` matches for the
+controlled study, or `environment.manifest_sha256` for the production one. The
+corpus is deliberately excluded from formatting tools: a variant's lexical form
+is the independent variable, and reformatting it silently changes the experiment.
+
+The production study's fetched revisions are not in this repository — they are
+other people's code under their own licences. What ships is the manifest that
+identifies them and the results computed from them.
 
 ## 9. Literature search record
 
@@ -363,4 +489,10 @@ Works positioned against, by role:
 
 `artifact` — public code and data, no paper. Not submitted, not peer-reviewed,
 not a preprint. The results in this repository were produced by the commands in
-§8 and can be regenerated from the corpus digest recorded in them.
+§8 and can be regenerated from the digests recorded in them.
+
+Two studies, both reproducible: a controlled one over 96 execution-labelled
+variants, and a production one over 140 real CVE fixes in 65 projects. They agree
+(ρ = +0.782), and the second was collected from sources the author had no hand in.
+That is the strongest form the evidence takes at this stage; it is still one
+author, seven weakness classes, Python only, and without CodeQL.

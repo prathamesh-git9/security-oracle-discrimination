@@ -1,0 +1,2121 @@
+{
+  "generated_at": "2026-08-14T17:26:36+00:00",
+  "counts": {
+    "advisories": 306,
+    "pairs": 140,
+    "no_commit_reference": 165,
+    "duplicate_commits": 9,
+    "uncovered_advisories": 0,
+    "merge_commits": 15,
+    "too_broad": 7,
+    "no_python_files": 8,
+    "fetch_failures": 0
+  },
+  "pairs": [
+    {
+      "ghsa": "GHSA-2689-cw26-6cpj",
+      "cve": "CVE-2024-53305",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "benbusby/whoogle-search",
+      "sha": "223f00c3c0533423114f99b30c561278bc0b42ba",
+      "parent_sha": "466cb63d0e5235364249cd6b83431ef8b5c82444",
+      "path": "app/models/config.py",
+      "additions": 23,
+      "deletions": 27,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-29pf-2h5f-8g72",
+      "cve": "CVE-2026-4372",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "high",
+      "repo": "huggingface/transformers",
+      "sha": "a7f8e7ff37d87d1a1a0c8cf607971c607741452f",
+      "parent_sha": "744639aba7811a9120e738d975ee4498dee60f92",
+      "path": "src/transformers/configuration_utils.py",
+      "additions": 7,
+      "deletions": 5,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-29pf-2h5f-8g72",
+      "cve": "CVE-2026-4372",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "high",
+      "repo": "huggingface/transformers",
+      "sha": "a7f8e7ff37d87d1a1a0c8cf607971c607741452f",
+      "parent_sha": "744639aba7811a9120e738d975ee4498dee60f92",
+      "path": "src/transformers/integrations/hub_kernels.py",
+      "additions": 15,
+      "deletions": 4,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-2f96-g7mh-g2hx",
+      "cve": null,
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "gitpython-developers/GitPython",
+      "sha": "56806080c1348749b07daa4a2024ce47b3cad285",
+      "parent_sha": "181e8ede7543dbbdcee92756cea260f675316c63",
+      "path": "git/cmd.py",
+      "additions": 36,
+      "deletions": 4,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-2vpq-fh52-j3wv",
+      "cve": "CVE-2025-24793",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "snowflakedb/snowflake-connector-python",
+      "sha": "f3f9b666518d29c31a49384bbaa9a65889e72056",
+      "parent_sha": "3769b43822357c3874c40f5e74068458c2dc79af",
+      "path": "src/snowflake/connector/cursor.py",
+      "additions": 6,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-2vpq-fh52-j3wv",
+      "cve": "CVE-2025-24793",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "snowflakedb/snowflake-connector-python",
+      "sha": "f3f9b666518d29c31a49384bbaa9a65889e72056",
+      "parent_sha": "3769b43822357c3874c40f5e74068458c2dc79af",
+      "path": "src/snowflake/connector/pandas_tools.py",
+      "additions": 93,
+      "deletions": 29,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-339r-cjv9-x78g",
+      "cve": "CVE-2024-11958",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "critical",
+      "repo": "run-llama/llama_index",
+      "sha": "35bd221e948e40458052d30c6ef2779bc965b6d0",
+      "parent_sha": "b71d4f76837728adf8d6e390192a3e0ce2497c21",
+      "path": "llama-index-integrations/retrievers/llama-index-retrievers-duckdb-retriever/llama_index/retrievers/duckdb_retriever/base.py",
+      "additions": 13,
+      "deletions": 21,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-35m5-8cvj-8783",
+      "cve": "CVE-2021-39182",
+      "cwes": [
+        "CWE-916"
+      ],
+      "severity": "high",
+      "repo": "Morgan-Phoenix/EnroCrypt",
+      "sha": "e652d56ac60eadfc26489ab83927af13a9b9d8ce",
+      "parent_sha": "d02050267cecbe4f2877a07ca8a930129528ac05",
+      "path": "enrocrypt/hashing.py",
+      "additions": 0,
+      "deletions": 5,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-37g4-qqqv-7m99",
+      "cve": "CVE-2026-33310",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "intake/intake",
+      "sha": "d0c0b6b57c1cb3f73880655ded4a9b0e18e1fd1b",
+      "parent_sha": "67e0303735a60cf0f261e34c68139d0d3aa48c87",
+      "path": "intake/catalog/base.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-37g4-qqqv-7m99",
+      "cve": "CVE-2026-33310",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "intake/intake",
+      "sha": "d0c0b6b57c1cb3f73880655ded4a9b0e18e1fd1b",
+      "parent_sha": "67e0303735a60cf0f261e34c68139d0d3aa48c87",
+      "path": "intake/catalog/entry.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-37g4-qqqv-7m99",
+      "cve": "CVE-2026-33310",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "intake/intake",
+      "sha": "d0c0b6b57c1cb3f73880655ded4a9b0e18e1fd1b",
+      "parent_sha": "67e0303735a60cf0f261e34c68139d0d3aa48c87",
+      "path": "intake/catalog/local.py",
+      "additions": 3,
+      "deletions": 3,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-37g4-qqqv-7m99",
+      "cve": "CVE-2026-33310",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "intake/intake",
+      "sha": "d0c0b6b57c1cb3f73880655ded4a9b0e18e1fd1b",
+      "parent_sha": "67e0303735a60cf0f261e34c68139d0d3aa48c87",
+      "path": "intake/catalog/utils.py",
+      "additions": 8,
+      "deletions": 3,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-3f7w-8rr8-f37f",
+      "cve": null,
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "gitpython-developers/GitPython",
+      "sha": "3af0c2516c5e18c829da30338614688f6b69b49c",
+      "parent_sha": "07e8055585491aa3d0b42f79c5bc2bdd027fa6c0",
+      "path": "git/index/base.py",
+      "additions": 12,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-3f7w-8rr8-f37f",
+      "cve": null,
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "gitpython-developers/GitPython",
+      "sha": "3af0c2516c5e18c829da30338614688f6b69b49c",
+      "parent_sha": "07e8055585491aa3d0b42f79c5bc2bdd027fa6c0",
+      "path": "git/refs/tag.py",
+      "additions": 13,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-3vgw-585j-4m45",
+      "cve": "CVE-2026-12565",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "blacklanternsecurity/bbot",
+      "sha": "4fb38fd6e77cbf43b198ee8ddbaf380a9eb69d09",
+      "parent_sha": "3c6d881b090bd6b4817fe8bea1835187d8ca27bc",
+      "path": "bbot/core/modules.py",
+      "additions": 7,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-3vgw-585j-4m45",
+      "cve": "CVE-2026-12565",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "blacklanternsecurity/bbot",
+      "sha": "4fb38fd6e77cbf43b198ee8ddbaf380a9eb69d09",
+      "parent_sha": "3c6d881b090bd6b4817fe8bea1835187d8ca27bc",
+      "path": "bbot/modules/internal/unarchive.py",
+      "additions": 10,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-442q-2j6p-642g",
+      "cve": "CVE-2026-55390",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "koxudaxi/datamodel-code-generator",
+      "sha": "d2d5cecd9fd3a2a6dbf148bf0740b83a11fc6820",
+      "parent_sha": "2ff4a72b4550a2b2069754c5b075b1655067e5fb",
+      "path": "src/datamodel_code_generator/parser/xmlschema.py",
+      "additions": 17,
+      "deletions": 2,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-49mj-x8jp-qvfc",
+      "cve": "CVE-2025-58180",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "OctoPrint/OctoPrint",
+      "sha": "be4201ef58d9a7c03593252398c16eada90a258b",
+      "parent_sha": "c3a940962f4658a8e035a00388781b1cbd768841",
+      "path": "src/octoprint/events.py",
+      "additions": 129,
+      "deletions": 93,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-4f3f-g24h-fr8m",
+      "cve": "CVE-2026-1462",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "high",
+      "repo": "keras-team/keras",
+      "sha": "b6773d3decaef1b05d8e794458e148cb362f163f",
+      "parent_sha": "38687a6a7364894cd096afe6c76198ccae4af99d",
+      "path": "keras/src/export/tfsm_layer.py",
+      "additions": 34,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-4rhg-h8f2-v4jm",
+      "cve": "CVE-2026-7818",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "high",
+      "repo": "pgadmin-org/pgadmin4",
+      "sha": "30a8903374f936415ac4933dc0507eeb5e1baa43",
+      "parent_sha": "24485fe9649860dcb632bb8029d4fa8efbafbc04",
+      "path": "web/pgadmin/utils/session.py",
+      "additions": 72,
+      "deletions": 20,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-4vqc-wpwg-vh7j",
+      "cve": "CVE-2026-47192",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "low",
+      "repo": "siemens/kas",
+      "sha": "4cb4a3d01122ffaec9feaae768a5814092f6f9b5",
+      "parent_sha": "bad34c59da4927f4b3730a524136a438fb9174e3",
+      "path": "kas/repos.py",
+      "additions": 4,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-4x4j-2g7c-83w6",
+      "cve": "CVE-2026-55798",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "medium",
+      "repo": "python-pillow/Pillow",
+      "sha": "8404ea5fe5df40fc34aa1e51403dd6fce0778b8a",
+      "parent_sha": "87e788339e8746e7ceb8e901df9b0c7fda55e975",
+      "path": "src/PIL/ImageShow.py",
+      "additions": 18,
+      "deletions": 17,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-58hv-7753-xmfq",
+      "cve": "CVE-2026-12482",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "low",
+      "repo": "keras-team/keras",
+      "sha": "9867df45c456dd1077a6243bb56219f66e288150",
+      "parent_sha": "19796fab16d003cea4516cb8a58640609f04a515",
+      "path": "keras/src/utils/file_utils.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-5hxg-r395-fqxx",
+      "cve": "CVE-2026-64825",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "critical",
+      "repo": "home-assistant/core",
+      "sha": "567fe858289876b68b8162a77bd46e1e1af79752",
+      "parent_sha": "fd1a5d0c5aa7db9d9ee568fa8c74a33650aef41e",
+      "path": "homeassistant/components/backup/backup.py",
+      "additions": 16,
+      "deletions": 3,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-5hxg-r395-fqxx",
+      "cve": "CVE-2026-64825",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "critical",
+      "repo": "home-assistant/core",
+      "sha": "567fe858289876b68b8162a77bd46e1e1af79752",
+      "parent_sha": "fd1a5d0c5aa7db9d9ee568fa8c74a33650aef41e",
+      "path": "homeassistant/components/backup/manager.py",
+      "additions": 7,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-5hxg-r395-fqxx",
+      "cve": "CVE-2026-64825",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "critical",
+      "repo": "home-assistant/core",
+      "sha": "567fe858289876b68b8162a77bd46e1e1af79752",
+      "parent_sha": "fd1a5d0c5aa7db9d9ee568fa8c74a33650aef41e",
+      "path": "homeassistant/components/backup/util.py",
+      "additions": 10,
+      "deletions": 3,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-5jmr-gcrj-2c9q",
+      "cve": "CVE-2026-59820",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "BerriAI/litellm",
+      "sha": "6a15adcd64137d37f73dee76dfe7481f8c2d9196",
+      "parent_sha": "e828a91eeefbc2e6e5fe7a34ddd40a5201216b15",
+      "path": "litellm/llms/litellm_proxy/skills/prompt_injection.py",
+      "additions": 13,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-5jmr-gcrj-2c9q",
+      "cve": "CVE-2026-59820",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "BerriAI/litellm",
+      "sha": "6a15adcd64137d37f73dee76dfe7481f8c2d9196",
+      "parent_sha": "e828a91eeefbc2e6e5fe7a34ddd40a5201216b15",
+      "path": "litellm/llms/litellm_proxy/skills/sandbox_executor.py",
+      "additions": 7,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-6426-9fv3-65x8",
+      "cve": "CVE-2026-1312",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "medium",
+      "repo": "django/django",
+      "sha": "005d60d97c4dfb117503bdb6f2facfcaf9315d84",
+      "parent_sha": "69065ca869b0970dff8fdd8fafb390bf8b3bf222",
+      "path": "django/db/models/sql/query.py",
+      "additions": 5,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-6497-prx7-gpmq",
+      "cve": "CVE-2025-69662",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "geopandas/geopandas",
+      "sha": "6aa8ef14ffdee4ba1044349ab948e1a1fbfaf419",
+      "parent_sha": "c301579e0ac4034c19bece63c08bf628613700b4",
+      "path": "geopandas/io/sql.py",
+      "additions": 5,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-69w3-r845-3855",
+      "cve": "CVE-2026-1839",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "medium",
+      "repo": "huggingface/transformers",
+      "sha": "03c8082ba4594c9b8d6fe190ca9bed0e5f8ca396",
+      "parent_sha": "2aa7b652811b3a2fe92bd586a2bbd4f9cde19a57",
+      "path": "src/transformers/trainer.py",
+      "additions": 2,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-6p8h-3wgx-97gf",
+      "cve": null,
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "gitpython-developers/GitPython",
+      "sha": "ffcb5359e87619f4fe4a70a4aff5f08c5580ba97",
+      "parent_sha": "e8d0fbf774d1f6baa3b481adfe48bd262e43b453",
+      "path": "git/repo/base.py",
+      "additions": 5,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-6w2r-r2m5-xq5w",
+      "cve": "CVE-2025-57833",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "django/django",
+      "sha": "102965ea93072fe3c39a30be437c683ec1106ef5",
+      "parent_sha": "44cd014a0ad35b3867595db1f3f4f1844308d581",
+      "path": "django/db/models/sql/query.py",
+      "additions": 1,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-74vm-8frp-7w68",
+      "cve": "CVE-2026-25632",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "critical",
+      "repo": "WaterFutures/EPyT-Flow",
+      "sha": "3fff9151494c7dbc72073830b734f0a7e550e385",
+      "parent_sha": "0491aa2e07b8886f0345cc8e8ddbcf3d13c486be",
+      "path": "epyt_flow/serialization.py",
+      "additions": 23,
+      "deletions": 13,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-7gj6-22m4-qfhx",
+      "cve": "CVE-2024-10901",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "critical",
+      "repo": "eosphoros-ai/DB-GPT",
+      "sha": "295cdb8723663d5b0954d5d1dfb4f02b7223b8ff",
+      "parent_sha": "d40e80153b743c9763e397ce2bb4b40568912152",
+      "path": "dbgpt/app/openapi/api_v1/editor/api_editor_v1.py",
+      "additions": 69,
+      "deletions": 7,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-7p73-8jqx-23r8",
+      "cve": "CVE-2025-64104",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "langchain-ai/langgraph",
+      "sha": "bc9d45b476101e441cb1cc602dea03eb29232de4",
+      "parent_sha": "7d3f0089aad852d324d282f86ef7426e35ba87c7",
+      "path": "libs/checkpoint-sqlite/langgraph/store/sqlite/base.py",
+      "additions": 24,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-7wc2-qxgw-g8gg",
+      "cve": "CVE-2026-28802",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "high",
+      "repo": "authlib/authlib",
+      "sha": "a61c2acb807496e67f32051b5f1b1d5ccf8f0a75",
+      "parent_sha": "21f7f50820f3906cebad308b35c816abf746ec3d",
+      "path": "authlib/jose/rfc7518/jws_algs.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-8359-h9fx-j6v9",
+      "cve": "CVE-2026-55389",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "koxudaxi/datamodel-code-generator",
+      "sha": "2ff4a72b4550a2b2069754c5b075b1655067e5fb",
+      "parent_sha": "2dbe5b5794472a4cad8e9286c942dffda7359816",
+      "path": "src/datamodel_code_generator/parser/jsonschema.py",
+      "additions": 34,
+      "deletions": 6,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-869j-r97x-hx2g",
+      "cve": "CVE-2026-59153",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "ankitects/anki",
+      "sha": "858e5689d0e4fd24f74856c7e8f245412694a219",
+      "parent_sha": "c168175b17053a5bbdf19ccaf6bb10c331b9486e",
+      "path": "qt/aqt/mediasrv.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-8ffj-4hx4-9pgf",
+      "cve": "CVE-2026-39413",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "medium",
+      "repo": "HKUDS/LightRAG",
+      "sha": "728f2e54509d93e0a44f929c7f83f2c88d6d291b",
+      "parent_sha": "9944ce1cd1b3c3a951db3ac4c907169358004fca",
+      "path": "lightrag/api/auth.py",
+      "additions": 15,
+      "deletions": 2,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-8h88-gxp3-j7pg",
+      "cve": null,
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "medium",
+      "repo": "jahlives/openssl_encrypt",
+      "sha": "f4a1ba660063cd9e17883829e5272a248525a16b",
+      "parent_sha": "05e45f393886b5bf7e924d2dd42099a9dd37f91d",
+      "path": "openssl_encrypt/modules/key_bundle.py",
+      "additions": 12,
+      "deletions": 5,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-8prr-286p-4w7j",
+      "cve": "CVE-2026-34400",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "medium",
+      "repo": "alerta/alerta",
+      "sha": "aeba85a37a09e5769a7a2da56481aa979ff99a00",
+      "parent_sha": "cc0993d0b245dbeaa19e8ec30c9992ec06fa293e",
+      "path": "alerta/database/backends/mongodb/utils.py",
+      "additions": 4,
+      "deletions": 3,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-8prr-286p-4w7j",
+      "cve": "CVE-2026-34400",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "medium",
+      "repo": "alerta/alerta",
+      "sha": "aeba85a37a09e5769a7a2da56481aa979ff99a00",
+      "parent_sha": "cc0993d0b245dbeaa19e8ec30c9992ec06fa293e",
+      "path": "alerta/database/backends/postgres/utils.py",
+      "additions": 3,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-8prr-286p-4w7j",
+      "cve": "CVE-2026-34400",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "medium",
+      "repo": "alerta/alerta",
+      "sha": "aeba85a37a09e5769a7a2da56481aa979ff99a00",
+      "parent_sha": "cc0993d0b245dbeaa19e8ec30c9992ec06fa293e",
+      "path": "alerta/settings.py",
+      "additions": 1,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-8prr-286p-4w7j",
+      "cve": "CVE-2026-34400",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "medium",
+      "repo": "alerta/alerta",
+      "sha": "aeba85a37a09e5769a7a2da56481aa979ff99a00",
+      "parent_sha": "cc0993d0b245dbeaa19e8ec30c9992ec06fa293e",
+      "path": "setup.py",
+      "additions": 1,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-8qxj-f9rh-9fg2",
+      "cve": "CVE-2019-14859",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "critical",
+      "repo": "tlsfuzzer/python-ecdsa",
+      "sha": "3427fa29f319b27898a28601955807abb44c0830",
+      "parent_sha": "563d2ee2c07e10ae4f77ccde4161d6a14c681b1b",
+      "path": "ecdsa/der.py",
+      "additions": 15,
+      "deletions": 2,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-8rjr-6qq5-pj9p",
+      "cve": "CVE-2016-1494",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "medium",
+      "repo": "sybrenstuvel/python-rsa",
+      "sha": "ab5d21c3b554f926d51ff3ad9c794bcf32e95b3c",
+      "parent_sha": "f209381620d9b276c9a34ab654c982a0123e43e3",
+      "path": "rsa/pkcs1.py",
+      "additions": 20,
+      "deletions": 38,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-9277-mp7x-85jf",
+      "cve": "CVE-2026-42563",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "jelmer/dulwich",
+      "sha": "e3331b3b3a122fc313460182f928f59723580b7b",
+      "parent_sha": "957f0dec2f095d5c87ba12eec383f75ffd021350",
+      "path": "dulwich/merge_drivers.py",
+      "additions": 21,
+      "deletions": 6,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-92qf-8gh3-gwcm",
+      "cve": "CVE-2024-53947",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "low",
+      "repo": "apache/superset",
+      "sha": "0e0028260fc8a2099250701524a489f3c9aa146f",
+      "parent_sha": "241834205f20b6fbca682fa479708eb5611e8634",
+      "path": "superset/config.py",
+      "additions": 10,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-92vm-mxjf-jqf3",
+      "cve": "CVE-2021-43572",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "critical",
+      "repo": "starkbank/ecdsa-python",
+      "sha": "d136170666e9510eb63c2572551805807bd4c17f",
+      "parent_sha": "998c92b59db5d2372f62d49f67805d8875d8b299",
+      "path": "ellipticcurve/__init__.py",
+      "additions": 6,
+      "deletions": 6,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-92vm-mxjf-jqf3",
+      "cve": "CVE-2021-43572",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "critical",
+      "repo": "starkbank/ecdsa-python",
+      "sha": "d136170666e9510eb63c2572551805807bd4c17f",
+      "parent_sha": "998c92b59db5d2372f62d49f67805d8875d8b299",
+      "path": "ellipticcurve/ecdsa.py",
+      "additions": 4,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-9jj8-v89v-xjvw",
+      "cve": "CVE-2026-25527",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "dgtlmoon/changedetection.io",
+      "sha": "9d38b4517364831889b5b0d7b3465fd060403fd4",
+      "parent_sha": "3558e9ee10cfe19cfe9209e469e43e9327c26735",
+      "path": "changedetectionio/flask_app.py",
+      "additions": 7,
+      "deletions": 2,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-9qhq-v63v-fv3j",
+      "cve": "CVE-2026-41497",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "critical",
+      "repo": "MervinPraison/PraisonAI",
+      "sha": "47bff65413beaa3c21bf633c1fae4e684348368c",
+      "parent_sha": "66bd9ee2a9c8c1e14514fe4d135b7e73e96a66fc",
+      "path": "src/praisonai/praisonai/cli/features/mcp.py",
+      "additions": 31,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-9rwj-6rc7-p77c",
+      "cve": "CVE-2025-67644",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "langchain-ai/langgraph",
+      "sha": "297242913f8ad2143ee3e2f72e67db0911d48e2a",
+      "parent_sha": "02965fb5f5345d67c94af21e0663262e140e5e00",
+      "path": "libs/checkpoint-sqlite/langgraph/checkpoint/sqlite/__init__.py",
+      "additions": 3,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-9rwj-6rc7-p77c",
+      "cve": "CVE-2025-67644",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "langchain-ai/langgraph",
+      "sha": "297242913f8ad2143ee3e2f72e67db0911d48e2a",
+      "parent_sha": "02965fb5f5345d67c94af21e0663262e140e5e00",
+      "path": "libs/checkpoint-sqlite/langgraph/checkpoint/sqlite/aio.py",
+      "additions": 3,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-9rwj-6rc7-p77c",
+      "cve": "CVE-2025-67644",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "langchain-ai/langgraph",
+      "sha": "297242913f8ad2143ee3e2f72e67db0911d48e2a",
+      "parent_sha": "02965fb5f5345d67c94af21e0663262e140e5e00",
+      "path": "libs/checkpoint-sqlite/langgraph/checkpoint/sqlite/utils.py",
+      "additions": 21,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-9rwj-6rc7-p77c",
+      "cve": "CVE-2025-67644",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "langchain-ai/langgraph",
+      "sha": "297242913f8ad2143ee3e2f72e67db0911d48e2a",
+      "parent_sha": "02965fb5f5345d67c94af21e0663262e140e5e00",
+      "path": "libs/checkpoint-sqlite/langgraph/store/sqlite/base.py",
+      "additions": 60,
+      "deletions": 95,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-9xwg-3r6f-jcx2",
+      "cve": "CVE-2026-61632",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "facelessuser/pymdown-extensions",
+      "sha": "edce35586d11a1ef78bb187bc60497fe6dbf3b64",
+      "parent_sha": "9fb9643c84c46386d77eef1a18929330620e3111",
+      "path": "pymdownx/b64.py",
+      "additions": 33,
+      "deletions": 6,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-c5px-58j2-7fqp",
+      "cve": "CVE-2026-54785",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "eLyiN/gemini-bridge",
+      "sha": "8f3b85afd02b692c4bc974b5176e12fb277ea801",
+      "parent_sha": "bb3ad9e44dba04092abc2e2a8af83223f10402db",
+      "path": "src/__init__.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-c5px-58j2-7fqp",
+      "cve": "CVE-2026-54785",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "eLyiN/gemini-bridge",
+      "sha": "8f3b85afd02b692c4bc974b5176e12fb277ea801",
+      "parent_sha": "bb3ad9e44dba04092abc2e2a8af83223f10402db",
+      "path": "src/mcp_server.py",
+      "additions": 21,
+      "deletions": 12,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-cj54-hpcc-gj6h",
+      "cve": "CVE-2026-53502",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "thumbor/thumbor",
+      "sha": "3b986d13677b30fe6651c8c72ebb25957ac0a40d",
+      "parent_sha": "471ef279700e9f79941d451acf88abe1601df875",
+      "path": "thumbor/loaders/file_loader.py",
+      "additions": 24,
+      "deletions": 11,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-cppw-2mf8-qpm5",
+      "cve": "CVE-2019-18835",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "high",
+      "repo": "matrix-org/synapse",
+      "sha": "172f264ed38e8bef857552f93114b4ee113a880b",
+      "parent_sha": "87259b3a3a4c1d17fc247a634320acb1fba0bc6e",
+      "path": "synapse/federation/federation_base.py",
+      "additions": 2,
+      "deletions": 5,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-cppw-2mf8-qpm5",
+      "cve": "CVE-2019-18835",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "high",
+      "repo": "matrix-org/synapse",
+      "sha": "172f264ed38e8bef857552f93114b4ee113a880b",
+      "parent_sha": "87259b3a3a4c1d17fc247a634320acb1fba0bc6e",
+      "path": "synapse/federation/federation_server.py",
+      "additions": 7,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-cppw-2mf8-qpm5",
+      "cve": "CVE-2019-18835",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "high",
+      "repo": "matrix-org/synapse",
+      "sha": "172f264ed38e8bef857552f93114b4ee113a880b",
+      "parent_sha": "87259b3a3a4c1d17fc247a634320acb1fba0bc6e",
+      "path": "synapse/handlers/federation.py",
+      "additions": 18,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-f2mf-q878-gh58",
+      "cve": "CVE-2026-21892",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "medium",
+      "repo": "Parsl/parsl",
+      "sha": "013a928461e70f38a33258bd525a351ed828e974",
+      "parent_sha": "2c37ae3e75137095302dac5f9cd3ca956cb51a47",
+      "path": "parsl/monitoring/visualization/views.py",
+      "additions": 8,
+      "deletions": 6,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-f3q4-ggfp-jv34",
+      "cve": null,
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "medium",
+      "repo": "Adyen/adyen-python-api-library",
+      "sha": "3292133dbc00ffc4cccfb92de672a76eaa587ca5",
+      "parent_sha": "81839c009461abb56689e7a7e32b649ff0211b96",
+      "path": "Adyen/util.py",
+      "additions": 2,
+      "deletions": 2,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-f42x-p2mx-hm8r",
+      "cve": "CVE-2026-50558",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "brightio/penelope",
+      "sha": "a040afb5db32c7e80b5e8a2f9b2164cf911cfa62",
+      "parent_sha": "ef417fff6cfb2ab02f3303949fe60a4f163d0ed5",
+      "path": "penelope.py",
+      "additions": 46,
+      "deletions": 16,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-fg23-3346-88f5",
+      "cve": "CVE-2026-50181",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "langroid/langroid",
+      "sha": "56e2756ecab70a70a7e6edbee2f2187b8484683e",
+      "parent_sha": "fee670d502ed6d82b8414388bd137a315830331f",
+      "path": "langroid/agent/tools/file_tools.py",
+      "additions": 18,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-fg23-3346-88f5",
+      "cve": "CVE-2026-50181",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "langroid/langroid",
+      "sha": "56e2756ecab70a70a7e6edbee2f2187b8484683e",
+      "parent_sha": "fee670d502ed6d82b8414388bd137a315830331f",
+      "path": "langroid/utils/system.py",
+      "additions": 28,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-fmvh-rvq5-hhjx",
+      "cve": "CVE-2018-16515",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "high",
+      "repo": "matrix-org/synapse",
+      "sha": "5bf8bc79ebc22c61968f2eb487714813fccbdb9b",
+      "parent_sha": "67dbe4c89944cf5957f806ad63f60880e2242b23",
+      "path": "synapse/federation/federation_base.py",
+      "additions": 110,
+      "deletions": 16,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-frmv-pr5f-9mcr",
+      "cve": "CVE-2025-64459",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "critical",
+      "repo": "django/django",
+      "sha": "06dd38324ac3d60d83d9f3adabf0dcdf423d2a85",
+      "parent_sha": "6e13348436fccf8f22982921d6a3a3e65c956a9f",
+      "path": "django/db/models/query_utils.py",
+      "additions": 4,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-frvj-c5qp-xj4w",
+      "cve": "CVE-2026-59221",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "open-webui/open-webui",
+      "sha": "05098d25a58d03738e01c4e85e8852c3b4ad849c",
+      "parent_sha": "3266a8c9eb6b8408a869a33378a0f4ad8a46809e",
+      "path": "backend/open_webui/routers/models.py",
+      "additions": 3,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-frvj-c5qp-xj4w",
+      "cve": "CVE-2026-59221",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "open-webui/open-webui",
+      "sha": "05098d25a58d03738e01c4e85e8852c3b4ad849c",
+      "parent_sha": "3266a8c9eb6b8408a869a33378a0f4ad8a46809e",
+      "path": "backend/open_webui/routers/terminals.py",
+      "additions": 3,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-g3gw-q23r-pgqm",
+      "cve": "CVE-2026-26331",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "yt-dlp/yt-dlp",
+      "sha": "1fbbe29b99dc61375bf6d786f824d9fcf6ea9c1a",
+      "parent_sha": "c105461647315f7f479091194944713b392ca729",
+      "path": "yt_dlp/extractor/common.py",
+      "additions": 10,
+      "deletions": 3,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-g3gw-q23r-pgqm",
+      "cve": "CVE-2026-26331",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "yt-dlp/yt-dlp",
+      "sha": "1fbbe29b99dc61375bf6d786f824d9fcf6ea9c1a",
+      "parent_sha": "c105461647315f7f479091194944713b392ca729",
+      "path": "yt_dlp/extractor/getcourseru.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-g3gw-q23r-pgqm",
+      "cve": "CVE-2026-26331",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "yt-dlp/yt-dlp",
+      "sha": "1fbbe29b99dc61375bf6d786f824d9fcf6ea9c1a",
+      "parent_sha": "c105461647315f7f479091194944713b392ca729",
+      "path": "yt_dlp/extractor/pornhub.py",
+      "additions": 2,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-g3gw-q23r-pgqm",
+      "cve": "CVE-2026-26331",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "yt-dlp/yt-dlp",
+      "sha": "1fbbe29b99dc61375bf6d786f824d9fcf6ea9c1a",
+      "parent_sha": "c105461647315f7f479091194944713b392ca729",
+      "path": "yt_dlp/extractor/teachable.py",
+      "additions": 2,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-g99h-56mw-8263",
+      "cve": "CVE-2025-1753",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "run-llama/llama_index",
+      "sha": "b57e76738c53ca82d88658b82f2d82d1c7839c7d",
+      "parent_sha": "2c00a1dfc71ec513353aa10159d980b68c3c7e70",
+      "path": "llama-index-cli/llama_index/cli/rag/base.py",
+      "additions": 6,
+      "deletions": 4,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-gh82-f9x8-5frx",
+      "cve": "CVE-2026-12479",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "keras-team/keras",
+      "sha": "d8caeb58cc9e61ea092445dc7a20908ca8d693e2",
+      "parent_sha": "04e6f792b208c4b1f742c99b6d14c4e9d7af9897",
+      "path": "keras/src/saving/saving_lib.py",
+      "additions": 29,
+      "deletions": 5,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-grp3-h8m8-45p7",
+      "cve": "CVE-2026-35588",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "medium",
+      "repo": "nicolargo/glances",
+      "sha": "d339181f03a14bb15506307e9d58f876e23d8160",
+      "parent_sha": "8aa613712ae5b85970b4187a17a0ca5bc8e5d7d9",
+      "path": "glances/exports/glances_cassandra/__init__.py",
+      "additions": 25,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-gvg8-93h5-g6qq",
+      "cve": "CVE-2026-1287",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "django/django",
+      "sha": "e891a84c7ef9962bfcc3b4685690219542f86a22",
+      "parent_sha": "a33540b3e20b5d759aa8b2e4b9ca0e8edd285344",
+      "path": "django/db/models/sql/query.py",
+      "additions": 14,
+      "deletions": 9,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-h7pc-vwp9-298g",
+      "cve": "CVE-2026-6873",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "low",
+      "repo": "django/django",
+      "sha": "594360cbf58be7f56eb6da96d58644297c99ef85",
+      "parent_sha": "e074d83bb20ca90c73721b76bee4c4d9c8a6db04",
+      "path": "django/conf/global_settings.py",
+      "additions": 1,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-h7pc-vwp9-298g",
+      "cve": "CVE-2026-6873",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "low",
+      "repo": "django/django",
+      "sha": "594360cbf58be7f56eb6da96d58644297c99ef85",
+      "parent_sha": "e074d83bb20ca90c73721b76bee4c4d9c8a6db04",
+      "path": "django/core/signing.py",
+      "additions": 24,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-h7pc-vwp9-298g",
+      "cve": "CVE-2026-6873",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "low",
+      "repo": "django/django",
+      "sha": "594360cbf58be7f56eb6da96d58644297c99ef85",
+      "parent_sha": "e074d83bb20ca90c73721b76bee4c4d9c8a6db04",
+      "path": "django/http/request.py",
+      "additions": 2,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-h7pc-vwp9-298g",
+      "cve": "CVE-2026-6873",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "low",
+      "repo": "django/django",
+      "sha": "594360cbf58be7f56eb6da96d58644297c99ef85",
+      "parent_sha": "e074d83bb20ca90c73721b76bee4c4d9c8a6db04",
+      "path": "django/http/response.py",
+      "additions": 3,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-hhrp-gw25-jr43",
+      "cve": "CVE-2026-57516",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "high",
+      "repo": "ray-project/ray",
+      "sha": "41443a18f9e6403a072de69098a279c23e2d943c",
+      "parent_sha": "a6416a64596db70e3de2404342b7f51ebdb8b5a1",
+      "path": "python/ray/data/_internal/datasource/webdataset_datasource.py",
+      "additions": 36,
+      "deletions": 5,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-hmq2-w58f-27jc",
+      "cve": null,
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "gitpython-developers/GitPython",
+      "sha": "4299c990e1ca21896f9485277caf7bb0ae5b404c",
+      "parent_sha": "b324c831cbc02c82b99c18113b622d03539d23cd",
+      "path": "git/objects/submodule/base.py",
+      "additions": 2,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-hp84-p2gq-6fvr",
+      "cve": "CVE-2026-7815",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "pgadmin-org/pgadmin4",
+      "sha": "cf53953d9ad66c182a08e662c1ba29c5831b486b",
+      "parent_sha": "d112dc3b962218efc3613fa727d54f0fc5b1d527",
+      "path": "web/pgadmin/tools/maintenance/__init__.py",
+      "additions": 48,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-hpr9-3m2g-3j9p",
+      "cve": "CVE-2025-59681",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "django/django",
+      "sha": "41b43c74bda19753c757036673ea9db74acf494a",
+      "parent_sha": "6c82b0bc91fc650891b0b411ac4a5a86cf0cf3e8",
+      "path": "django/db/models/sql/query.py",
+      "additions": 9,
+      "deletions": 8,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-j74f-g7vx-fh4x",
+      "cve": "CVE-2026-7816",
+      "cwes": [
+        "CWE-78",
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "pgadmin-org/pgadmin4",
+      "sha": "13badc62c3ac985cdd0f9764af60686cdd574ac5",
+      "parent_sha": "cf53953d9ad66c182a08e662c1ba29c5831b486b",
+      "path": "web/pgadmin/tools/import_export/__init__.py",
+      "additions": 151,
+      "deletions": 4,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-jfpc-wj3m-qw2m",
+      "cve": "CVE-2026-25130",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "critical",
+      "repo": "aliasrobotics/cai",
+      "sha": "e22a1220f764e2d7cf9da6d6144926f53ca01cde",
+      "parent_sha": "e38ac2b031dc87ee2b608ee43a59ac9d913fdd74",
+      "path": "src/cai/tools/reconnaissance/filesystem.py",
+      "additions": 13,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-jg22-mg44-37j8",
+      "cve": "CVE-2026-34993",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "medium",
+      "repo": "aio-libs/aiohttp",
+      "sha": "dcf40f30637e8752c76781cf6703b5a236749a00",
+      "parent_sha": "4f12a6641e3db60aa35c60c9db61b45c89176c00",
+      "path": "aiohttp/cookiejar.py",
+      "additions": 110,
+      "deletions": 4,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-jmgm-gx32-vp4w",
+      "cve": "CVE-2024-12911",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "run-llama/llama_index",
+      "sha": "bf282074e20e7dafd5e2066137dcd4cd17c3fb9e",
+      "parent_sha": "5ede4680f4fdee232f972ee3ca47c1581e9d5254",
+      "path": "llama-index-core/llama_index/core/query_engine/__init__.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-m3pm-rpgg-5wj6",
+      "cve": "CVE-2025-25305",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "high",
+      "repo": "home-assistant/core",
+      "sha": "8c6547f1b64f4a3d9f10090b97383353c9367892",
+      "parent_sha": "4c4dc6a0860074b5e09d13279c556eef7ad16477",
+      "path": "homeassistant/components/octoprint/__init__.py",
+      "additions": 4,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-m3pm-rpgg-5wj6",
+      "cve": "CVE-2025-25305",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "high",
+      "repo": "home-assistant/core",
+      "sha": "8c6547f1b64f4a3d9f10090b97383353c9367892",
+      "parent_sha": "4c4dc6a0860074b5e09d13279c556eef7ad16477",
+      "path": "homeassistant/components/octoprint/config_flow.py",
+      "additions": 4,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-m429-fhmv-c6q2",
+      "cve": "CVE-2020-14365",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "medium",
+      "repo": "ansible/ansible",
+      "sha": "9bea33ffa3be3d64827f59882d95b817cfab9b7e",
+      "parent_sha": "d083307e369b968db7852d6cd2d5a9008724ab1d",
+      "path": "lib/ansible/modules/dnf.py",
+      "additions": 22,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-m54h-vhf9-3w3m",
+      "cve": "CVE-2026-12568",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "blacklanternsecurity/bbot",
+      "sha": "36bc20818206a59f6d430e905248f85c439e5397",
+      "parent_sha": "cb923f5e41ecec540eb7d79712286cb4f17942a9",
+      "path": "bbot/modules/postman_download.py",
+      "additions": 8,
+      "deletions": 4,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-m7j5-r2p5-c39r",
+      "cve": null,
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "medium",
+      "repo": "mmaitre314/picklescan",
+      "sha": "4d9bc9cd34bca8672dad3481cd4556d5ba747156",
+      "parent_sha": "173c8f2a869ea9b69b543477525ec70611c3c6f4",
+      "path": "src/picklescan/scanner.py",
+      "additions": 1,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-m8wh-29wm-52mv",
+      "cve": "CVE-2026-9335",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "keras-team/keras",
+      "sha": "23370f16b0ab9a200f7550a34e54a3ceab74ba0e",
+      "parent_sha": "ce31ac27182994b16eb7d7347d647bc16691aa8f",
+      "path": "keras/src/saving/file_editor.py",
+      "additions": 15,
+      "deletions": 5,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-mhr3-j7m5-c7c9",
+      "cve": "CVE-2026-27794",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "medium",
+      "repo": "langchain-ai/langgraph",
+      "sha": "f91d79d0c86932ded6e3b9f195d5a0bbd5aef99c",
+      "parent_sha": "cb2faa7dda0f2ea49d2729361e1802fb233feaa5",
+      "path": "libs/checkpoint/langgraph/cache/base/__init__.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-mw35-8rx3-xf9r",
+      "cve": "CVE-2026-41486",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "high",
+      "repo": "ray-project/ray",
+      "sha": "c02bd31ae31996805868baa446a131a8d304525f",
+      "parent_sha": "ba6fbf1c8328b56d454ed1b875abe1c197afefd7",
+      "path": "python/ray/data/_internal/tensor_extensions/arrow.py",
+      "additions": 28,
+      "deletions": 19,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-mw3h-qjxj-6xg9",
+      "cve": "CVE-2026-53501",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "high",
+      "repo": "thumbor/thumbor",
+      "sha": "e3ae3e2500537b4d735df4144129a649374bb70b",
+      "parent_sha": "68876715350c6c8f49c324e5515e64908830aed7",
+      "path": "thumbor/handlers/imaging.py",
+      "additions": 11,
+      "deletions": 3,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-mwm9-4648-f68q",
+      "cve": "CVE-2026-1207",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "django/django",
+      "sha": "81aa5292967cd09319c45fe2c1a525ce7b6684d8",
+      "parent_sha": "eb22e1d6d643360e952609ef562c139a100ea4eb",
+      "path": "django/contrib/gis/db/backends/postgis/operations.py",
+      "additions": 6,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-p3w6-jcg4-52xh",
+      "cve": "CVE-2019-13177",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "critical",
+      "repo": "apragacz/django-rest-registration",
+      "sha": "26d094fab65ea8c2694fdfb6a3ab95a7808b62d5",
+      "parent_sha": "dd7a2a53114f038f8089c00491dcfca29f471f0c",
+      "path": "rest_registration/verification.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-pfjf-5gxr-995x",
+      "cve": "CVE-2026-28415",
+      "cwes": [
+        "CWE-330"
+      ],
+      "severity": "medium",
+      "repo": "gradio-app/gradio",
+      "sha": "dfee0da06d0aa94b3c2684131e7898d5d5c1911e",
+      "parent_sha": "b01c95a58be8e18bb4ddef7f2ee238a7774e5be9",
+      "path": "gradio/oauth.py",
+      "additions": 9,
+      "deletions": 2,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-pmch-g965-grmr",
+      "cve": "CVE-2026-50180",
+      "cwes": [
+        "CWE-22",
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "langroid/langroid",
+      "sha": "00b7dd7b79c5d03c94be284cf3459d98195ebfba",
+      "parent_sha": "56e2756ecab70a70a7e6edbee2f2187b8484683e",
+      "path": "langroid/agent/special/sql/sql_chat_agent.py",
+      "additions": 22,
+      "deletions": 11,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-pwh4-6r3m-j2rf",
+      "cve": "CVE-2025-55156",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "pyload/pyload",
+      "sha": "134edcdf6e2a10c393743c254da3d9d90b74258f",
+      "parent_sha": "a123accec0618798db77f9f5bc66838b741d9f58",
+      "path": "src/pyload/core/database/file_database.py",
+      "additions": 5,
+      "deletions": 5,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-pxrr-hq57-q35p",
+      "cve": "CVE-2026-33154",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "dynaconf/dynaconf",
+      "sha": "2fbb45ee36b8c0caa5b924fe19f3c1a5e8603fa7",
+      "parent_sha": "8547454cdf46dcc032a2fb46dad57fdb0235ec22",
+      "path": "dynaconf/base.py",
+      "additions": 26,
+      "deletions": 7,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-pxrr-hq57-q35p",
+      "cve": "CVE-2026-33154",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "dynaconf/dynaconf",
+      "sha": "2fbb45ee36b8c0caa5b924fe19f3c1a5e8603fa7",
+      "parent_sha": "8547454cdf46dcc032a2fb46dad57fdb0235ec22",
+      "path": "dynaconf/utils/parse_conf.py",
+      "additions": 37,
+      "deletions": 5,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-q4v3-wmm6-hcrx",
+      "cve": "CVE-2013-0294",
+      "cwes": [
+        "CWE-330"
+      ],
+      "severity": "high",
+      "repo": "wichert/pyrad",
+      "sha": "38f74b36814ca5b1a27d9898141126af4953bee5",
+      "parent_sha": "ddfedb2993b9dd66940da52d9bda281ab54aaaf4",
+      "path": "pyrad/packet.py",
+      "additions": 6,
+      "deletions": 3,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-qf7v-8hj3-4xw7",
+      "cve": "CVE-2020-5390",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "high",
+      "repo": "IdentityPython/pysaml2",
+      "sha": "5e9d5acbcd8ae45c4e736ac521fd2df5b1c62e25",
+      "parent_sha": "324656e6321fdf5a80184951d2ecaea644a737d8",
+      "path": "src/saml2/sigver.py",
+      "additions": 49,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-qg36-9jxh-fj25",
+      "cve": "CVE-2023-33185",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "low",
+      "repo": "django-ses/django-ses",
+      "sha": "b71b5f413293a13997b6e6314086cb9c22629795",
+      "parent_sha": "c01fd529156e08b91b57507332084632067cf85f",
+      "path": "django_ses/utils.py",
+      "additions": 50,
+      "deletions": 32,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-r4rv-85jg-w4mf",
+      "cve": "CVE-2026-59924",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "medium",
+      "repo": "lepture/mistune",
+      "sha": "1bef343ade163fc3bb95572b15be720084cdb993",
+      "parent_sha": "c7101fcbb6e8790e8e39157c5ca2238fc6dd6cbc",
+      "path": "src/mistune/directives/include.py",
+      "additions": 57,
+      "deletions": 20,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-r6h7-5pq2-j77h",
+      "cve": "CVE-2020-10729",
+      "cwes": [
+        "CWE-330"
+      ],
+      "severity": "medium",
+      "repo": "ansible/ansible",
+      "sha": "c520d70bf4748c8ee6718a7d0d0254051ba1c2e9",
+      "parent_sha": "c61c0f7ad55f874167056eea7a690a2fc3938005",
+      "path": "lib/ansible/template/__init__.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-r9mr-m37c-5fr3",
+      "cve": null,
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "gitpython-developers/GitPython",
+      "sha": "e8d0fbf774d1f6baa3b481adfe48bd262e43b453",
+      "parent_sha": "faf3c09038b03bc2bdd8545ef34bbf6d7f1cd11f",
+      "path": "git/cmd.py",
+      "additions": 7,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-rh5m-2482-966c",
+      "cve": "CVE-2026-32714",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "critical",
+      "repo": "scitokens/scitokens",
+      "sha": "3dba108853f2f4a6c0f2325c03779bf083c41cf2",
+      "parent_sha": "66b075c35da18f8364276553513a53c596b4b8e3",
+      "path": "src/scitokens/utils/keycache.py",
+      "additions": 15,
+      "deletions": 16,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-rm2q-f7jv-3cfp",
+      "cve": "CVE-2026-33046",
+      "cwes": [
+        "CWE-22",
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "indico/indico",
+      "sha": "0adb70f0ed66e129361d447868f5f3eb90dc5e96",
+      "parent_sha": "77eaee2ece47822e3b4e9b23539d57b45f541185",
+      "path": "indico/legacy/pdfinterface/latex.py",
+      "additions": 4,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-rm2q-f7jv-3cfp",
+      "cve": "CVE-2026-33046",
+      "cwes": [
+        "CWE-22",
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "indico/indico",
+      "sha": "0adb70f0ed66e129361d447868f5f3eb90dc5e96",
+      "parent_sha": "77eaee2ece47822e3b4e9b23539d57b45f541185",
+      "path": "indico/util/mdx_latex.py",
+      "additions": 38,
+      "deletions": 6,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-rm43-82j9-r4mj",
+      "cve": null,
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "dep0we/atomic-agents-stack",
+      "sha": "ec474f458122c5c0ca718d0df3078c8080338b2c",
+      "parent_sha": "da861310c27c87e1a0187e71ea7ff53817e54648",
+      "path": "atomic_agents/dashboard/serve.py",
+      "additions": 58,
+      "deletions": 22,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-rm79-x4g6-hvg5",
+      "cve": "CVE-2025-12763",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "medium",
+      "repo": "pgadmin-org/pgadmin4",
+      "sha": "e374edc69239b3e02ecde895e27d9f9e488b87ee",
+      "parent_sha": "1d397395f75320ca1d4ed5e9ca721c603415e836",
+      "path": "web/pgadmin/misc/bgprocess/process_executor.py",
+      "additions": 4,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-rm79-x4g6-hvg5",
+      "cve": "CVE-2025-12763",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "medium",
+      "repo": "pgadmin-org/pgadmin4",
+      "sha": "e374edc69239b3e02ecde895e27d9f9e488b87ee",
+      "parent_sha": "1d397395f75320ca1d4ed5e9ca721c603415e836",
+      "path": "web/pgadmin/tools/restore/__init__.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-rm79-x4g6-hvg5",
+      "cve": "CVE-2025-12763",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "medium",
+      "repo": "pgadmin-org/pgadmin4",
+      "sha": "e374edc69239b3e02ecde895e27d9f9e488b87ee",
+      "parent_sha": "1d397395f75320ca1d4ed5e9ca721c603415e836",
+      "path": "web/pgadmin/utils/__init__.py",
+      "additions": 9,
+      "deletions": 5,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-rqw2-ghq9-44m7",
+      "cve": "CVE-2025-13372",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "medium",
+      "repo": "django/django",
+      "sha": "479415ce5249bcdebeb6570c72df2a87f45a7bbf",
+      "parent_sha": "da1dfe64c821ba03ca7b0c936184cca1ad641316",
+      "path": "django/db/backends/postgresql/compiler.py",
+      "additions": 10,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-rv8h-p43r-4x5r",
+      "cve": "CVE-2013-4347",
+      "cwes": [
+        "CWE-330"
+      ],
+      "severity": "medium",
+      "repo": "joestump/python-oauth2",
+      "sha": "82dd2cdd4954cd7b8983d5d64c0dfd9072bf4650",
+      "parent_sha": "25f46b840a3ae58a91c794990f4aa7e55159c5c2",
+      "path": "oauth2/__init__.py",
+      "additions": 3,
+      "deletions": 3,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-rvhj-8chj-8v3c",
+      "cve": "CVE-2026-0596",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "critical",
+      "repo": "mlflow/mlflow",
+      "sha": "202fac4c83ccc8544c087c142b80196d0e60695c",
+      "parent_sha": "80c4d6feb1c7abadde89196b063a378f797465b2",
+      "path": "mlflow/pyfunc/mlserver.py",
+      "additions": 2,
+      "deletions": 1,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-rvp7-w75q-9fv2",
+      "cve": "CVE-2026-12567",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "low",
+      "repo": "blacklanternsecurity/bbot",
+      "sha": "16d9c42b6c591c07ee94d260cb0588e72d4eae2b",
+      "parent_sha": "64310b304d4a5b8f9f055e2b404ea2db90926e95",
+      "path": "bbot/modules/github_workflows.py",
+      "additions": 17,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-v2w2-w228-c444",
+      "cve": "CVE-2026-12484",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "high",
+      "repo": "keras-team/keras",
+      "sha": "55888d3becbdbb45dc16a55b489900f911e2dde5",
+      "parent_sha": "5798af8d3ba329511acced3cd622e863e42fe2ec",
+      "path": "keras/src/layers/core/lambda_layer.py",
+      "additions": 10,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-v2w2-w228-c444",
+      "cve": "CVE-2026-12484",
+      "cwes": [
+        "CWE-502"
+      ],
+      "severity": "high",
+      "repo": "keras-team/keras",
+      "sha": "55888d3becbdbb45dc16a55b489900f911e2dde5",
+      "parent_sha": "5798af8d3ba329511acced3cd622e863e42fe2ec",
+      "path": "keras/src/utils/torch_utils.py",
+      "additions": 10,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-v3c8-3pr6-gr7p",
+      "cve": "CVE-2025-1793",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "critical",
+      "repo": "run-llama/llama_index",
+      "sha": "0008041e8dde8e519621388e5d6f558bde6ef42e",
+      "parent_sha": "cc77ed70ad8b0e07b7803c1afcb988aa84b26644",
+      "path": "llama-index-core/llama_index/core/__init__.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-v3c8-3pr6-gr7p",
+      "cve": "CVE-2025-1793",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "critical",
+      "repo": "run-llama/llama_index",
+      "sha": "0008041e8dde8e519621388e5d6f558bde6ef42e",
+      "parent_sha": "cc77ed70ad8b0e07b7803c1afcb988aa84b26644",
+      "path": "llama-index-core/llama_index/core/agent/workflow/react_agent.py",
+      "additions": 4,
+      "deletions": 3,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-w48f-wwwf-f5fr",
+      "cve": "CVE-2026-35463",
+      "cwes": [
+        "CWE-78"
+      ],
+      "severity": "high",
+      "repo": "pyload/pyload",
+      "sha": "c4cf995a2803bdbe388addfc2b0f323277efc0e1",
+      "parent_sha": "33c55da084320430edfd941b60e3da0eb1be9443",
+      "path": "src/pyload/core/api/__init__.py",
+      "additions": 30,
+      "deletions": 19,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-wvwj-cvrp-7pv5",
+      "cve": "CVE-2026-27962",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "critical",
+      "repo": "authlib/authlib",
+      "sha": "a5d4b2d4c9e46bfa11c82f85fdc2bcc0b50ae681",
+      "parent_sha": "a769f343ae8d43236448e3e74445980861812e82",
+      "path": "authlib/jose/rfc7515/jws.py",
+      "additions": 0,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-wvwj-cvrp-7pv5",
+      "cve": "CVE-2026-27962",
+      "cwes": [
+        "CWE-347"
+      ],
+      "severity": "critical",
+      "repo": "authlib/authlib",
+      "sha": "a5d4b2d4c9e46bfa11c82f85fdc2bcc0b50ae681",
+      "parent_sha": "a769f343ae8d43236448e3e74445980861812e82",
+      "path": "authlib/jose/rfc7516/jwe.py",
+      "additions": 0,
+      "deletions": 2,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-wxhm-2mq7-7697",
+      "cve": "CVE-2026-53598",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "microsoft/prompty",
+      "sha": "88ac9948d7d37995edbb2f6d36913436626c39e1",
+      "parent_sha": "90171a7738f9ff5a186416381cbfad9077cdf637",
+      "path": "runtime/python/prompty/prompty/_version.py",
+      "additions": 1,
+      "deletions": 1,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-wxhm-2mq7-7697",
+      "cve": "CVE-2026-53598",
+      "cwes": [
+        "CWE-22"
+      ],
+      "severity": "high",
+      "repo": "microsoft/prompty",
+      "sha": "88ac9948d7d37995edbb2f6d36913436626c39e1",
+      "parent_sha": "90171a7738f9ff5a186416381cbfad9077cdf637",
+      "path": "runtime/python/prompty/prompty/core/loader.py",
+      "additions": 51,
+      "deletions": 12,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-x46r-mf5g-xpr6",
+      "cve": "CVE-2026-30930",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "high",
+      "repo": "nicolargo/glances",
+      "sha": "39161f0d6fd723d83f534b48f24cdca722573336",
+      "parent_sha": "faa29ac9143c89c7b8b157ee9d7064d1ed128196",
+      "path": "glances/exports/glances_timescaledb/__init__.py",
+      "additions": 44,
+      "deletions": 31,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-x783-xp3g-mqhp",
+      "cve": "CVE-2026-40315",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "medium",
+      "repo": "MervinPraison/PraisonAI",
+      "sha": "0accebb2e3c3ec2fca66bbea0444fb7a35f0b4ef",
+      "parent_sha": "757559f67f1c37388288605f8d893ff9e10fb6ed",
+      "path": "src/praisonai/praisonai/gateway/server.py",
+      "additions": 1,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-x783-xp3g-mqhp",
+      "cve": "CVE-2026-40315",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "medium",
+      "repo": "MervinPraison/PraisonAI",
+      "sha": "0accebb2e3c3ec2fca66bbea0444fb7a35f0b4ef",
+      "parent_sha": "757559f67f1c37388288605f8d893ff9e10fb6ed",
+      "path": "src/praisonai/praisonai/persistence/conversation/sqlite.py",
+      "additions": 6,
+      "deletions": 0,
+      "solo": false
+    },
+    {
+      "ghsa": "GHSA-xv5p-fjw5-vrj6",
+      "cve": "CVE-2025-62703",
+      "cwes": [
+        "CWE-78",
+        "CWE-502"
+      ],
+      "severity": "high",
+      "repo": "fugue-project/fugue",
+      "sha": "6f25326779fd1f528198098d6287c5a863176fc0",
+      "parent_sha": "16416af693d03749fc875a42dc9e97fcfb0362c2",
+      "path": "fugue/rpc/flask.py",
+      "additions": 9,
+      "deletions": 0,
+      "solo": true
+    },
+    {
+      "ghsa": "GHSA-xxh2-68g9-8jqr",
+      "cve": "CVE-2026-26198",
+      "cwes": [
+        "CWE-89"
+      ],
+      "severity": "critical",
+      "repo": "collerek/ormar",
+      "sha": "a03bae14fe01358d3eaf7e319fcd5db2e4956b16",
+      "parent_sha": "ef95d3214daf9ccfd5591ae51d8b2fbe4b66c633",
+      "path": "ormar/queryset/queryset.py",
+      "additions": 6,
+      "deletions": 1,
+      "solo": true
+    }
+  ]
+}

@@ -24,6 +24,30 @@ from .base import Finding, OracleError, normalise_cwes
 
 TIMEOUT_S = 1800.0
 
+#: Files are handed to the tools in batches. A single invocation carrying every
+#: path is simpler, but Windows caps a command line at about 32k characters and
+#: the production study scans a few hundred absolute paths -- comfortably enough
+#: to trip it. A truncated argument list would look like an oracle that found
+#: nothing, which is the most dangerous way for this study to fail.
+BATCH_SIZE = 50
+
+#: Semgrep pays a large fixed cost per invocation loading and compiling its rule
+#: pack, so it gets far bigger batches than bandit. 120 absolute paths is roughly
+#: 18k characters, which stays clear of the 32k limit while paying that cost once
+#: per batch instead of once per fifty files.
+SEMGREP_BATCH_SIZE = 120
+
+#: Real project files are orders of magnitude larger than the corpus variants,
+#: and a single pathological file can hold a rule engine for minutes. Bounding
+#: per-rule time keeps a scan finite; semgrep reports what it skipped, and a
+#: skipped file is recorded as "no finding", which is the honest reading.
+SEMGREP_RULE_TIMEOUT_S = 10
+
+
+def _batched(files: list[Path], size: int = BATCH_SIZE):
+    for start in range(0, len(files), size):
+        yield files[start : start + size]
+
 
 def _run(cmd: list[str], timeout: float = TIMEOUT_S) -> subprocess.CompletedProcess:
     return subprocess.run(  # noqa: S603 - fixed argv, no shell
@@ -61,27 +85,36 @@ class BanditOracle:
     def scan(self, files: list[Path]) -> dict[Path, list[Finding]]:
         if not files:
             return {}
-        cmd = [self._python, "-m", "bandit", "-f", "json", "-q", *[str(f) for f in files]]
-        proc = _run(cmd)
-        # bandit exits 1 when it has findings, which is a success for us.
-        if proc.returncode not in (0, 1) or not proc.stdout.strip():
-            raise OracleError(
-                f"bandit failed (rc={proc.returncode}): {proc.stderr[:500]}"
-            )
-
-        payload = json.loads(proc.stdout)
         results: dict[Path, list[Finding]] = {}
-        for item in payload.get("results", []):
-            path = Path(item["filename"]).resolve()
-            results.setdefault(path, []).append(
-                Finding(
-                    rule_id=str(item.get("test_id", "")),
-                    cwes=normalise_cwes(item.get("issue_cwe")),
-                    line=int(item.get("line_number", 0) or 0),
-                    message=str(item.get("issue_text", ""))[:300],
-                    severity=str(item.get("issue_severity", "")),
+        for batch in _batched(files):
+            cmd = [
+                self._python,
+                "-m",
+                "bandit",
+                "-f",
+                "json",
+                "-q",
+                *[str(f) for f in batch],
+            ]
+            proc = _run(cmd)
+            # bandit exits 1 when it has findings, which is a success for us.
+            if proc.returncode not in (0, 1) or not proc.stdout.strip():
+                raise OracleError(
+                    f"bandit failed (rc={proc.returncode}): {proc.stderr[:500]}"
                 )
-            )
+
+            payload = json.loads(proc.stdout)
+            for item in payload.get("results", []):
+                path = Path(item["filename"]).resolve()
+                results.setdefault(path, []).append(
+                    Finding(
+                        rule_id=str(item.get("test_id", "")),
+                        cwes=normalise_cwes(item.get("issue_cwe")),
+                        line=int(item.get("line_number", 0) or 0),
+                        message=str(item.get("issue_text", ""))[:300],
+                        severity=str(item.get("issue_severity", "")),
+                    )
+                )
         return results
 
 
@@ -126,35 +159,39 @@ class SemgrepOracle:
         if not self._exe:
             raise OracleError("semgrep executable not found")
 
-        cmd = [
-            self._exe,
-            "scan",
-            f"--config={self.config}",
-            "--json",
-            "--quiet",
-            "--metrics=off",
-            "--no-git-ignore",
-            *[str(f) for f in files],
-        ]
-        proc = _run(cmd)
-        if not proc.stdout.strip():
-            raise OracleError(
-                f"semgrep produced no JSON (rc={proc.returncode}): {proc.stderr[:500]}"
-            )
-
-        payload = json.loads(proc.stdout)
         results: dict[Path, list[Finding]] = {}
-        for item in payload.get("results", []):
-            path = Path(item["path"]).resolve()
-            extra = item.get("extra", {})
-            metadata = extra.get("metadata", {})
-            results.setdefault(path, []).append(
-                Finding(
-                    rule_id=str(item.get("check_id", "")),
-                    cwes=normalise_cwes(metadata.get("cwe")),
-                    line=int(item.get("start", {}).get("line", 0) or 0),
-                    message=str(extra.get("message", ""))[:300],
-                    severity=str(extra.get("severity", "")),
+        for batch in _batched(files, SEMGREP_BATCH_SIZE):
+            cmd = [
+                self._exe,
+                "scan",
+                f"--config={self.config}",
+                "--json",
+                "--quiet",
+                "--metrics=off",
+                "--no-git-ignore",
+                f"--timeout={SEMGREP_RULE_TIMEOUT_S}",
+                "--timeout-threshold=3",
+                *[str(f) for f in batch],
+            ]
+            proc = _run(cmd)
+            if not proc.stdout.strip():
+                raise OracleError(
+                    f"semgrep produced no JSON (rc={proc.returncode}): "
+                    f"{proc.stderr[:500]}"
                 )
-            )
+
+            payload = json.loads(proc.stdout)
+            for item in payload.get("results", []):
+                path = Path(item["path"]).resolve()
+                extra = item.get("extra", {})
+                metadata = extra.get("metadata", {})
+                results.setdefault(path, []).append(
+                    Finding(
+                        rule_id=str(item.get("check_id", "")),
+                        cwes=normalise_cwes(metadata.get("cwe")),
+                        line=int(item.get("start", {}).get("line", 0) or 0),
+                        message=str(extra.get("message", ""))[:300],
+                        severity=str(extra.get("severity", "")),
+                    )
+                )
         return results
