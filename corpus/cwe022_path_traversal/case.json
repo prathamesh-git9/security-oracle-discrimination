@@ -1,0 +1,81 @@
+{
+  "id": "cwe022_path_traversal",
+  "cwe": "CWE-22",
+  "accept_cwes": [
+    "CWE-22",
+    "CWE-23",
+    "CWE-36",
+    "CWE-73"
+  ],
+  "title": "Path traversal in a document reader",
+  "sink_family": "filesystem path construction and open()",
+  "witness": "A name walking out through an existing subdirectory returns the secret stored beside the root.",
+  "variants": [
+    {
+      "id": "s01_resolve_containment",
+      "file": "s01_resolve_containment.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s02_commonpath",
+      "file": "s02_commonpath.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s03_basename",
+      "file": "s03_basename.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s04_comment_decoy",
+      "file": "s04_comment_decoy.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "the traversable form appears verbatim in a comment"
+    },
+    {
+      "id": "s05_helper_indirection",
+      "file": "s05_helper_indirection.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s06_allowlist",
+      "file": "s06_allowlist.py",
+      "declared": "secure"
+    },
+    {
+      "id": "v01_join",
+      "file": "v01_join.py",
+      "declared": "vulnerable",
+      "canonical": true
+    },
+    {
+      "id": "v02_concat",
+      "file": "v02_concat.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v03_pathlib",
+      "file": "v03_pathlib.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v04_prefix_check",
+      "file": "v04_prefix_check.py",
+      "declared": "vulnerable",
+      "notes": "looks defended; guard only rejects a leading .."
+    },
+    {
+      "id": "v05_normpath_only",
+      "file": "v05_normpath_only.py",
+      "declared": "vulnerable",
+      "notes": "looks defended; normalisation is not containment"
+    },
+    {
+      "id": "v06_helper_indirection",
+      "file": "v06_helper_indirection.py",
+      "declared": "vulnerable",
+      "notes": "join and open in different functions"
+    }
+  ]
+}

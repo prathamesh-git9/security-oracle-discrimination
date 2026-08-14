@@ -1,0 +1,83 @@
+{
+  "id": "cwe330_predictable_token",
+  "cwe": "CWE-330",
+  "accept_cwes": [
+    "CWE-330",
+    "CWE-338",
+    "CWE-335"
+  ],
+  "title": "Session token drawn from a predictable generator",
+  "sink_family": "random number source for a security token",
+  "witness": "The next token is predicted from one observed token by searching a small window of clock-derived seeds.",
+  "variants": [
+    {
+      "id": "s01_secrets_token_hex",
+      "file": "s01_secrets_token_hex.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s02_systemrandom",
+      "file": "s02_systemrandom.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "uses the random module, but its OS-backed generator"
+    },
+    {
+      "id": "s03_os_urandom",
+      "file": "s03_os_urandom.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s04_comment_decoy",
+      "file": "s04_comment_decoy.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "the predictable form appears verbatim in a comment"
+    },
+    {
+      "id": "s05_secrets_with_random_jitter",
+      "file": "s05_secrets_with_random_jitter.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "random used for backoff jitter, not for the token"
+    },
+    {
+      "id": "s06_helper_indirection",
+      "file": "s06_helper_indirection.py",
+      "declared": "secure"
+    },
+    {
+      "id": "v01_seeded_random",
+      "file": "v01_seeded_random.py",
+      "declared": "vulnerable",
+      "canonical": true
+    },
+    {
+      "id": "v02_global_seed",
+      "file": "v02_global_seed.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v03_choice_alphabet",
+      "file": "v03_choice_alphabet.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v04_getattr_dispatch",
+      "file": "v04_getattr_dispatch.py",
+      "declared": "vulnerable",
+      "notes": "draw reached via getattr on a computed name"
+    },
+    {
+      "id": "v05_helper_indirection",
+      "file": "v05_helper_indirection.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v06_module_alias",
+      "file": "v06_module_alias.py",
+      "declared": "vulnerable",
+      "notes": "module imported under an alias"
+    }
+  ]
+}

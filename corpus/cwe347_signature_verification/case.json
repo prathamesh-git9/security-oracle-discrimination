@@ -1,0 +1,84 @@
+{
+  "id": "cwe347_signature_verification",
+  "cwe": "CWE-347",
+  "accept_cwes": [
+    "CWE-347",
+    "CWE-345",
+    "CWE-287",
+    "CWE-807"
+  ],
+  "title": "Signed session token whose signature is not properly verified",
+  "sink_family": "HMAC signature verification of a client-held token",
+  "witness": "An administrator payload with a forged, empty, foreign-key or 'none' signature is accepted.",
+  "variants": [
+    {
+      "id": "s01_compare_digest",
+      "file": "s01_compare_digest.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s02_helper_indirection",
+      "file": "s02_helper_indirection.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s03_comment_decoy",
+      "file": "s03_comment_decoy.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "the unverified form appears verbatim in a comment"
+    },
+    {
+      "id": "s04_equality_compare",
+      "file": "s04_equality_compare.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "== instead of compare_digest: a timing leak, not a forgery"
+    },
+    {
+      "id": "s05_sha512",
+      "file": "s05_sha512.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s06_verify_then_parse",
+      "file": "s06_verify_then_parse.py",
+      "declared": "secure"
+    },
+    {
+      "id": "v01_no_verification",
+      "file": "v01_no_verification.py",
+      "declared": "vulnerable",
+      "canonical": true
+    },
+    {
+      "id": "v02_verify_disabled",
+      "file": "v02_verify_disabled.py",
+      "declared": "vulnerable",
+      "notes": "verification present but gated off by a flag"
+    },
+    {
+      "id": "v03_alg_none",
+      "file": "v03_alg_none.py",
+      "declared": "vulnerable",
+      "notes": "accepts a token that declares no algorithm"
+    },
+    {
+      "id": "v04_length_check_only",
+      "file": "v04_length_check_only.py",
+      "declared": "vulnerable",
+      "notes": "checks the signature's shape, not its value"
+    },
+    {
+      "id": "v05_swallowed_failure",
+      "file": "v05_swallowed_failure.py",
+      "declared": "vulnerable",
+      "notes": "verification failure caught and ignored"
+    },
+    {
+      "id": "v06_helper_no_verify",
+      "file": "v06_helper_no_verify.py",
+      "declared": "vulnerable"
+    }
+  ]
+}

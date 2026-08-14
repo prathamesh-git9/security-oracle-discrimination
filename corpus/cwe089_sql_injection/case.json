@@ -1,0 +1,82 @@
+{
+  "id": "cwe089_sql_injection",
+  "cwe": "CWE-89",
+  "accept_cwes": [
+    "CWE-89",
+    "CWE-943"
+  ],
+  "title": "SQL injection in a user lookup",
+  "sink_family": "sqlite3 query execution",
+  "witness": "Filter bypass: an unknown username that closes the quoted literal returns the admin row.",
+  "variants": [
+    {
+      "id": "s01_param_qmark",
+      "file": "s01_param_qmark.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s02_param_named",
+      "file": "s02_param_named.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s03_fstring_static_table",
+      "file": "s03_fstring_static_table.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "f-string reaches execute(), but only constants are interpolated"
+    },
+    {
+      "id": "s04_comment_decoy",
+      "file": "s04_comment_decoy.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "the vulnerable form appears verbatim in a comment"
+    },
+    {
+      "id": "s05_helper_indirection",
+      "file": "s05_helper_indirection.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s06_escaped_literal",
+      "file": "s06_escaped_literal.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "concatenation into SQL, correctly escaped"
+    },
+    {
+      "id": "v01_fstring",
+      "file": "v01_fstring.py",
+      "declared": "vulnerable",
+      "canonical": true
+    },
+    {
+      "id": "v02_percent_format",
+      "file": "v02_percent_format.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v03_concat",
+      "file": "v03_concat.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v04_str_format",
+      "file": "v04_str_format.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v05_helper_indirection",
+      "file": "v05_helper_indirection.py",
+      "declared": "vulnerable",
+      "notes": "taint crosses a function boundary"
+    },
+    {
+      "id": "v06_getattr_dispatch",
+      "file": "v06_getattr_dispatch.py",
+      "declared": "vulnerable",
+      "notes": "sink reached via getattr on a computed name"
+    }
+  ]
+}

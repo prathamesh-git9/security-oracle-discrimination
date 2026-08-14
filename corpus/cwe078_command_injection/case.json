@@ -1,0 +1,83 @@
+{
+  "id": "cwe078_command_injection",
+  "cwe": "CWE-78",
+  "accept_cwes": [
+    "CWE-78",
+    "CWE-77",
+    "CWE-88"
+  ],
+  "title": "OS command injection when invoking an external tool",
+  "sink_family": "subprocess / os shell execution",
+  "witness": "A shell separator appended to the path runs a second command, observed as a marker file.",
+  "variants": [
+    {
+      "id": "s01_list_argv",
+      "file": "s01_list_argv.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s02_check_output",
+      "file": "s02_check_output.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s03_shell_false_explicit",
+      "file": "s03_shell_false_explicit.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s04_comment_decoy",
+      "file": "s04_comment_decoy.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "shell=True appears verbatim in a comment"
+    },
+    {
+      "id": "s05_helper_indirection",
+      "file": "s05_helper_indirection.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s06_shell_true_quoted",
+      "file": "s06_shell_true_quoted.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "shell=True with platform-correct quoting of every argument"
+    },
+    {
+      "id": "v01_fstring_shell",
+      "file": "v01_fstring_shell.py",
+      "declared": "vulnerable",
+      "canonical": true
+    },
+    {
+      "id": "v02_concat_shell",
+      "file": "v02_concat_shell.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v03_kwargs_shell",
+      "file": "v03_kwargs_shell.py",
+      "declared": "vulnerable",
+      "notes": "shell=True arrives via dict expansion"
+    },
+    {
+      "id": "v04_os_popen",
+      "file": "v04_os_popen.py",
+      "declared": "vulnerable",
+      "notes": "alternative sink"
+    },
+    {
+      "id": "v05_shell_flag_var",
+      "file": "v05_shell_flag_var.py",
+      "declared": "vulnerable",
+      "notes": "shell flag reaches the call through a local variable"
+    },
+    {
+      "id": "v06_helper_indirection",
+      "file": "v06_helper_indirection.py",
+      "declared": "vulnerable",
+      "notes": "shell call behind a generic runner"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "cwe916_password_hashing",
+  "cwe": "CWE-916",
+  "accept_cwes": [
+    "CWE-916",
+    "CWE-327",
+    "CWE-328",
+    "CWE-326",
+    "CWE-759",
+    "CWE-760"
+  ],
+  "title": "Password stored with a computationally cheap hash",
+  "sink_family": "hashlib password digest selection",
+  "witness": "Offline recovery within a fixed budget: a precomputed digest table, then 256 dictionary candidates capped at 2 seconds.",
+  "variants": [
+    {
+      "id": "s01_pbkdf2",
+      "file": "s01_pbkdf2.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s02_scrypt",
+      "file": "s02_scrypt.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s03_algo_from_constant",
+      "file": "s03_algo_from_constant.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s04_comment_decoy",
+      "file": "s04_comment_decoy.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "md5 and sha1 appear verbatim in a comment"
+    },
+    {
+      "id": "s05_pbkdf2_with_md5_cache_key",
+      "file": "s05_pbkdf2_with_md5_cache_key.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "md5 present in the module for a non-security cache key"
+    },
+    {
+      "id": "s06_helper_indirection",
+      "file": "s06_helper_indirection.py",
+      "declared": "secure"
+    },
+    {
+      "id": "v01_md5",
+      "file": "v01_md5.py",
+      "declared": "vulnerable",
+      "canonical": true
+    },
+    {
+      "id": "v02_sha1",
+      "file": "v02_sha1.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v03_sha256_unsalted",
+      "file": "v03_sha256_unsalted.py",
+      "declared": "vulnerable",
+      "notes": "strong hash, wrong job -- not a broken-algorithm name"
+    },
+    {
+      "id": "v04_salted_sha256",
+      "file": "v04_salted_sha256.py",
+      "declared": "vulnerable",
+      "notes": "salted, still cheap enough to brute force"
+    },
+    {
+      "id": "v05_hashlib_new_dynamic",
+      "file": "v05_hashlib_new_dynamic.py",
+      "declared": "vulnerable",
+      "notes": "algorithm named as a string"
+    },
+    {
+      "id": "v06_getattr_dispatch",
+      "file": "v06_getattr_dispatch.py",
+      "declared": "vulnerable",
+      "notes": "constructor reached via getattr on a computed name"
+    }
+  ]
+}

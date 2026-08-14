@@ -1,0 +1,82 @@
+{
+  "id": "cwe502_yaml_deserialization",
+  "cwe": "CWE-502",
+  "accept_cwes": [
+    "CWE-502"
+  ],
+  "title": "Unsafe deserialisation of a YAML configuration document",
+  "sink_family": "PyYAML loader selection",
+  "witness": "A !!python/object/apply tag calls os.mkdir during parsing; the directory appearing proves arbitrary construction.",
+  "variants": [
+    {
+      "id": "s01_safe_load",
+      "file": "s01_safe_load.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s02_load_with_safeloader",
+      "file": "s02_load_with_safeloader.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "spelled yaml.load(), behaves as SafeLoader"
+    },
+    {
+      "id": "s03_load_with_fullloader",
+      "file": "s03_load_with_fullloader.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "yaml.load() with FullLoader"
+    },
+    {
+      "id": "s04_comment_decoy",
+      "file": "s04_comment_decoy.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "unsafe_load appears verbatim in a comment"
+    },
+    {
+      "id": "s05_getattr_dispatch",
+      "file": "s05_getattr_dispatch.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s06_helper_indirection",
+      "file": "s06_helper_indirection.py",
+      "declared": "secure"
+    },
+    {
+      "id": "v01_unsafe_load",
+      "file": "v01_unsafe_load.py",
+      "declared": "vulnerable",
+      "canonical": true
+    },
+    {
+      "id": "v02_loader_unsafe",
+      "file": "v02_loader_unsafe.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v03_loader_default",
+      "file": "v03_loader_default.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v04_getattr_dispatch",
+      "file": "v04_getattr_dispatch.py",
+      "declared": "vulnerable",
+      "notes": "sink reached via getattr on a computed name"
+    },
+    {
+      "id": "v05_loader_from_module_var",
+      "file": "v05_loader_from_module_var.py",
+      "declared": "vulnerable",
+      "notes": "loader selected through a module constant"
+    },
+    {
+      "id": "v06_helper_indirection",
+      "file": "v06_helper_indirection.py",
+      "declared": "vulnerable",
+      "notes": "identical helper to the secure variant, different argument"
+    }
+  ]
+}

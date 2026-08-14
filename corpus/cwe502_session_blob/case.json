@@ -1,0 +1,83 @@
+{
+  "id": "cwe502_session_blob",
+  "cwe": "CWE-502",
+  "accept_cwes": [
+    "CWE-502"
+  ],
+  "title": "Unsafe deserialisation of a client-held session blob",
+  "sink_family": "pickle decoding of untrusted bytes",
+  "witness": "A pickle whose __reduce__ calls os.mkdir; the directory appearing proves arbitrary construction.",
+  "variants": [
+    {
+      "id": "s01_json",
+      "file": "s01_json.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s02_json_helper",
+      "file": "s02_json_helper.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s03_comment_decoy",
+      "file": "s03_comment_decoy.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "pickle.loads appears verbatim in a comment"
+    },
+    {
+      "id": "s04_signed_pickle",
+      "file": "s04_signed_pickle.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "pickle.loads present but gated on an HMAC the attacker cannot forge"
+    },
+    {
+      "id": "s05_json_getattr",
+      "file": "s05_json_getattr.py",
+      "declared": "secure"
+    },
+    {
+      "id": "s06_json_with_pickle_fingerprint",
+      "file": "s06_json_with_pickle_fingerprint.py",
+      "declared": "secure",
+      "decoy": true,
+      "notes": "pickle used on trusted in-process data for a digest"
+    },
+    {
+      "id": "v01_pickle",
+      "file": "v01_pickle.py",
+      "declared": "vulnerable",
+      "canonical": true
+    },
+    {
+      "id": "v02_pickle_helper",
+      "file": "v02_pickle_helper.py",
+      "declared": "vulnerable"
+    },
+    {
+      "id": "v03_pickle_alias",
+      "file": "v03_pickle_alias.py",
+      "declared": "vulnerable",
+      "notes": "imported under a different name"
+    },
+    {
+      "id": "v04_pickle_getattr",
+      "file": "v04_pickle_getattr.py",
+      "declared": "vulnerable",
+      "notes": "sink reached via getattr on a computed name"
+    },
+    {
+      "id": "v05_pickle_blocklist",
+      "file": "v05_pickle_blocklist.py",
+      "declared": "vulnerable",
+      "notes": "looks defended; blocklist misses the payload"
+    },
+    {
+      "id": "v06_permissive_unpickler",
+      "file": "v06_permissive_unpickler.py",
+      "declared": "vulnerable",
+      "notes": "custom Unpickler that permits every class"
+    }
+  ]
+}

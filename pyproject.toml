@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "soda"
+version = "0.1.0"
+description = "Execution-grounded audit of security oracles used to score AI-generated code"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Prathamesh Kalamkar" }]
+keywords = ["security", "benchmark-validity", "oracle", "llm", "code-generation"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Security",
+]
+dependencies = [
+  "typer>=0.12",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+oracles = ["bandit>=1.7"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+soda = "soda.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/soda"]
+
+[tool.ruff]
+line-length = 90
+target-version = "py311"
+# The corpus is deliberately-vulnerable research material. It is executed, never
+# imported by the package, and must keep its exact lexical form: reformatting it
+# would silently destroy the independent variable this study measures.
+extend-exclude = ["corpus"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
