@@ -128,7 +128,14 @@ indistinguishable, and only the second is evidence about construct validity.
 
 ## 4. Results
 
-Corpus SHA-256 `0bf722b8…`; Python 3.14.6; bandit 1.9.4; semgrep 1.173.0.
+Corpus SHA-256 `e3d65a1c…`; Python 3.14.6; bandit 1.9.4; semgrep 1.173.0.
+
+The labels replicate across platforms. The same corpus executed on an Ubuntu CI
+runner under Python 3.12 produced the same 48 secure / 48 vulnerable / 0 invalid
+split and identical scores for both reconstructed oracles, despite the CWE-78
+witness using a different shell payload on each platform. That is a check on the
+witnesses, not on the oracles: it says the labels are a property of the code
+rather than of the machine that ran it.
 
 ### 4.1 Discrimination
 

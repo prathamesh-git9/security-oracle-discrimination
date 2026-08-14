@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-14T16:14:06+00:00",
+  "generated_at": "2026-08-14T16:22:17+00:00",
   "environment": {
     "python": "3.14.6",
     "platform": "Windows-11-10.0.26200-SP0",
-    "corpus_sha256": "0bf722b8c0737534ab7c8e87d4a38dc36619c762846c28f0cb8703d1454e76a3"
+    "corpus_sha256": "e3d65a1cb0593a3cb9bb16317df7091253045682cc87902109758df2e3326de0"
   },
   "corpus": {
     "cases": 8,
@@ -1870,7 +1870,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0175,
+      "elapsed_s": 0.0204,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -1948,7 +1948,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.016,
+      "elapsed_s": 0.0178,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -1987,7 +1987,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.018,
+      "elapsed_s": 0.0196,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2028,7 +2028,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0179,
+      "elapsed_s": 0.0172,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2067,7 +2067,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0177,
+      "elapsed_s": 0.0174,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2110,7 +2110,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0159,
+      "elapsed_s": 0.0197,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2153,7 +2153,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0182,
+      "elapsed_s": 0.0189,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2196,7 +2196,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0167,
+      "elapsed_s": 0.0189,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2240,7 +2240,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0172,
+      "elapsed_s": 0.0187,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2283,7 +2283,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0174,
+      "elapsed_s": 0.0182,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2322,7 +2322,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0165,
+      "elapsed_s": 0.02,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2361,7 +2361,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.2362,
+      "elapsed_s": 0.2322,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2403,7 +2403,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.2342,
+      "elapsed_s": 0.2313,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2445,7 +2445,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.2369,
+      "elapsed_s": 0.235,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2487,7 +2487,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.2293,
+      "elapsed_s": 0.2405,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2531,7 +2531,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.235,
+      "elapsed_s": 0.2354,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2573,7 +2573,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.2966,
+      "elapsed_s": 0.316,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2623,7 +2623,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.2232,
+      "elapsed_s": 0.246,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2673,7 +2673,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.2182,
+      "elapsed_s": 0.225,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2723,7 +2723,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.2204,
+      "elapsed_s": 0.2262,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2767,7 +2767,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.2227,
+      "elapsed_s": 0.2177,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2813,7 +2813,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.23,
+      "elapsed_s": 0.2279,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2861,7 +2861,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.2199,
+      "elapsed_s": 0.2198,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2911,7 +2911,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0152,
+      "elapsed_s": 0.0174,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2950,7 +2950,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0163,
+      "elapsed_s": 0.0143,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -2989,7 +2989,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.016,
+      "elapsed_s": 0.0169,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3034,7 +3034,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0165,
+      "elapsed_s": 0.0153,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3076,7 +3076,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0139,
+      "elapsed_s": 0.017,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3115,7 +3115,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0127,
+      "elapsed_s": 0.0154,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3160,7 +3160,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0138,
+      "elapsed_s": 0.0156,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3206,7 +3206,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0149,
+      "elapsed_s": 0.0157,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3252,7 +3252,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0169,
+      "elapsed_s": 0.0156,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3295,7 +3295,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0138,
+      "elapsed_s": 0.0159,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3336,7 +3336,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0134,
+      "elapsed_s": 0.0206,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3381,7 +3381,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0137,
+      "elapsed_s": 0.0162,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3424,7 +3424,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0163,
+      "elapsed_s": 0.0213,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3463,7 +3463,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.006,
+      "elapsed_s": 0.007,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3502,7 +3502,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0056,
+      "elapsed_s": 0.0071,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3541,7 +3541,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0168,
+      "elapsed_s": 0.0182,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3582,7 +3582,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0171,
+      "elapsed_s": 0.0181,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3627,7 +3627,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0157,
+      "elapsed_s": 0.019,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3666,7 +3666,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0061,
+      "elapsed_s": 0.0059,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3711,7 +3711,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0054,
+      "elapsed_s": 0.006,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3756,7 +3756,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0059,
+      "elapsed_s": 0.0072,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3801,7 +3801,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0064,
+      "elapsed_s": 0.0069,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3846,7 +3846,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0055,
+      "elapsed_s": 0.0074,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3891,7 +3891,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.007,
+      "elapsed_s": 0.0069,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -3934,7 +3934,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0175,
+      "elapsed_s": 0.0207,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4012,7 +4012,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.017,
+      "elapsed_s": 0.0203,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4051,7 +4051,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0177,
+      "elapsed_s": 0.0196,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4094,7 +4094,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0183,
+      "elapsed_s": 0.0195,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4133,7 +4133,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0175,
+      "elapsed_s": 0.0205,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4172,7 +4172,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0163,
+      "elapsed_s": 0.019,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4215,7 +4215,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0172,
+      "elapsed_s": 0.0171,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4256,7 +4256,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0173,
+      "elapsed_s": 0.0194,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4297,7 +4297,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0166,
+      "elapsed_s": 0.0188,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4340,7 +4340,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0192,
+      "elapsed_s": 0.0175,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4379,7 +4379,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0168,
+      "elapsed_s": 0.0193,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4422,7 +4422,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0095,
+      "elapsed_s": 0.0123,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4461,7 +4461,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0092,
+      "elapsed_s": 0.0136,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4500,7 +4500,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0097,
+      "elapsed_s": 0.0125,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4541,7 +4541,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.02,
+      "elapsed_s": 0.0205,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4589,7 +4589,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0098,
+      "elapsed_s": 0.0121,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4628,7 +4628,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0188,
+      "elapsed_s": 0.0219,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4671,7 +4671,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0104,
+      "elapsed_s": 0.0111,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4719,7 +4719,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0104,
+      "elapsed_s": 0.0117,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4767,7 +4767,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.011,
+      "elapsed_s": 0.014,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4815,7 +4815,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0121,
+      "elapsed_s": 0.0108,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4858,7 +4858,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0112,
+      "elapsed_s": 0.0114,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4906,7 +4906,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0103,
+      "elapsed_s": 0.0112,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4951,7 +4951,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.036,
+      "elapsed_s": 0.0385,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -4990,7 +4990,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0345,
+      "elapsed_s": 0.0379,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5031,7 +5031,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0357,
+      "elapsed_s": 0.0361,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5076,7 +5076,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0374,
+      "elapsed_s": 0.0379,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5117,7 +5117,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0377,
+      "elapsed_s": 0.0378,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5156,7 +5156,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 0.0364,
+      "elapsed_s": 0.0371,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5201,7 +5201,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0369,
+      "elapsed_s": 0.0391,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5248,7 +5248,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0372,
+      "elapsed_s": 0.0373,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5297,7 +5297,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0363,
+      "elapsed_s": 0.0408,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5346,7 +5346,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.036,
+      "elapsed_s": 0.0377,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5385,7 +5385,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0373,
+      "elapsed_s": 0.0387,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5430,7 +5430,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0367,
+      "elapsed_s": 0.0376,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5475,7 +5475,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 3.0577,
+      "elapsed_s": 3.0906,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5514,7 +5514,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 2.4227,
+      "elapsed_s": 2.4583,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5553,7 +5553,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 3.0381,
+      "elapsed_s": 3.1038,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5592,7 +5592,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 3.0447,
+      "elapsed_s": 3.1014,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5633,7 +5633,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 2.9351,
+      "elapsed_s": 3.108,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5680,7 +5680,7 @@
       "label": "secure",
       "functional_ok": true,
       "exploited": false,
-      "elapsed_s": 3.0826,
+      "elapsed_s": 3.0932,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5719,7 +5719,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0165,
+      "elapsed_s": 0.0149,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5767,7 +5767,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0136,
+      "elapsed_s": 0.0172,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5816,7 +5816,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0146,
+      "elapsed_s": 0.0153,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5855,7 +5855,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0157,
+      "elapsed_s": 0.0168,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5894,7 +5894,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0133,
+      "elapsed_s": 0.0163,
       "detail": "",
       "verdicts": {
         "bandit": {
@@ -5937,7 +5937,7 @@
       "label": "vulnerable",
       "functional_ok": true,
       "exploited": true,
-      "elapsed_s": 0.0141,
+      "elapsed_s": 0.0147,
       "detail": "",
       "verdicts": {
         "bandit": {

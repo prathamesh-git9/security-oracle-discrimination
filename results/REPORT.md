@@ -1,6 +1,6 @@
 # Security oracle discrimination audit
 
-Generated: 2026-08-14T16:14:06+00:00; Python: 3.14.6; platform: Windows-11-10.0.26200-SP0; corpus SHA-256: 0bf722b8c0737534; corpus: 8 cases / 96 variants / secure 48, vulnerable 48, invalid 0.
+Generated: 2026-08-14T16:22:17+00:00; Python: 3.14.6; platform: Windows-11-10.0.26200-SP0; corpus SHA-256: e3d65a1cb0593a3c; corpus: 8 cases / 96 variants / secure 48, vulnerable 48, invalid 0.
 
 ## Corpus
 
