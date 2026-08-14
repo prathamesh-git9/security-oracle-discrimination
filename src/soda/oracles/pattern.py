@@ -72,7 +72,9 @@ RULES: dict[str, tuple[re.Pattern[str], tuple[str, ...], str]] = {
         "weak digest algorithm",
     ),
     "PAT-RANDOM-MODULE": (
-        re.compile(r"\brandom\.(random|randint|randrange|choice|getrandbits|seed|Random)\s*\("),
+        re.compile(
+            r"\brandom\.(random|randint|randrange|choice|getrandbits|seed|Random)\s*\("
+        ),
         ("CWE-330",),
         "value drawn from the random module",
     ),
@@ -86,7 +88,9 @@ RULES: dict[str, tuple[re.Pattern[str], tuple[str, ...], str]] = {
 #: Absence rules fire when a marker is present and a required mitigation is not.
 #: Checking for a *missing* call is the only way a text matcher can approach a
 #: weakness whose signature is an omission, and it is a common heuristic.
-ABSENCE_RULES: dict[str, tuple[re.Pattern[str], re.Pattern[str], tuple[str, ...], str]] = {
+AbsenceRule = tuple[re.Pattern[str], re.Pattern[str], tuple[str, ...], str]
+
+ABSENCE_RULES: dict[str, AbsenceRule] = {
     "PAT-SIG-NO-COMPARE": (
         re.compile(r"partition\s*\(\s*[\"']\.[\"']\s*\)|split\s*\(\s*[\"']\.[\"']\s*\)"),
         re.compile(r"compare_digest"),

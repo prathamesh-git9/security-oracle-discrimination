@@ -11,11 +11,11 @@ compared and disagreements reported rather than hidden.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import StrEnum
 from pathlib import Path
 
 
-class Label(str, Enum):
+class Label(StrEnum):
     """Ground-truth security label, established by execution."""
 
     SECURE = "secure"
@@ -93,6 +93,11 @@ class Verdict:
     flagged_target: bool
     #: The oracle reported any finding at all, of any class.
     flagged_any: bool
+    #: As `flagged_target`, but only counting findings the tool itself ranked at
+    #: medium severity or above. Low-severity advisory notes -- "you imported
+    #: subprocess" -- are how a checker can flag every file in a class and score
+    #: as perfectly sensitive while discriminating nothing.
+    flagged_target_confident: bool = False
     rule_ids: tuple[str, ...] = ()
     error: str = ""
 

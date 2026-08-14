@@ -19,16 +19,29 @@ from pathlib import Path
 from typing import Protocol, runtime_checkable
 
 CWE_RE = re.compile(r"CWE[-_ ]?(\d+)", re.IGNORECASE)
+#: bandit reports the identifier as a bare integer beside a MITRE link, so the
+#: number never appears next to the letters "CWE". Reading the link is the only
+#: way to recover it from the text.
+CWE_URL_RE = re.compile(r"cwe\.mitre\.org/data/definitions/(\d+)", re.IGNORECASE)
 
 
 def normalise_cwes(values) -> tuple[str, ...]:
     """Pull ``CWE-nnn`` out of whatever shape a tool reports it in.
 
-    Tools disagree about this field: bandit nests an object, semgrep supplies a
-    list of prose strings such as ``"CWE-89: Improper Neutralization ..."``. All
-    that matters downstream is the number.
+    Tools disagree about this field, and the disagreement is not cosmetic.
+    Semgrep supplies prose -- ``"CWE-89: Improper Neutralization ..."``. Bandit
+    supplies ``{"id": 89, "link": "https://cwe.mitre.org/data/definitions/89.html"}``,
+    where the number is a bare integer under a key. A reader of the JSON who
+    matched only on the letters "CWE" would conclude bandit had found nothing,
+    which is the audit measuring its own parser instead of the tool.
     """
     found: list[str] = []
+
+    def record(number) -> None:
+        tag = f"CWE-{number}"
+        if tag not in found:
+            found.append(tag)
+
     stack = [values]
     while stack:
         item = stack.pop()
@@ -37,13 +50,37 @@ def normalise_cwes(values) -> tuple[str, ...]:
         if isinstance(item, (list, tuple, set)):
             stack.extend(item)
         elif isinstance(item, dict):
-            stack.extend(item.values())
+            identifier = item.get("id")
+            if identifier is not None and str(identifier).strip().isdigit():
+                record(str(identifier).strip())
+            stack.extend(value for key, value in item.items() if key != "id")
         else:
-            for number in CWE_RE.findall(str(item)):
-                tag = f"CWE-{number}"
-                if tag not in found:
-                    found.append(tag)
-    return tuple(sorted(found))
+            text = str(item)
+            for number in CWE_RE.findall(text):
+                record(number)
+            for number in CWE_URL_RE.findall(text):
+                record(number)
+    return tuple(sorted(found, key=lambda tag: int(tag.split("-")[1])))
+
+
+#: Tools rank findings on incompatible vocabularies. Collapsing them onto one
+#: ordinal is what lets the audit ask a question a benchmark author actually
+#: faces: does insisting on a confident finding buy back any discrimination?
+SEVERITY_RANK = {
+    "": 2,  # unknown -- our own reconstructions do not rank their findings
+    "info": 1,
+    "low": 1,
+    "note": 1,
+    "warning": 2,
+    "medium": 2,
+    "error": 3,
+    "high": 3,
+    "critical": 3,
+}
+
+
+def severity_rank(label: str) -> int:
+    return SEVERITY_RANK.get(str(label or "").strip().lower(), 2)
 
 
 @dataclass(frozen=True)
@@ -54,6 +91,8 @@ class Finding:
     cwes: tuple[str, ...]
     line: int = 0
     message: str = ""
+    #: The tool's own severity word, kept verbatim; see :func:`severity_rank`.
+    severity: str = ""
 
 
 @runtime_checkable

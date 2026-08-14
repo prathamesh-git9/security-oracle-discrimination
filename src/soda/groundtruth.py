@@ -14,7 +14,9 @@ from .models import Case, GroundTruth, Variant
 DEFAULT_TIMEOUT_S = 120.0
 
 
-def evaluate(case: Case, variant: Variant, timeout: float = DEFAULT_TIMEOUT_S) -> GroundTruth:
+def evaluate(
+    case: Case, variant: Variant, timeout: float = DEFAULT_TIMEOUT_S
+) -> GroundTruth:
     """Run the variant's functional contract and exploit witness in a subprocess."""
     cmd = [
         sys.executable,
@@ -53,7 +55,9 @@ def evaluate(case: Case, variant: Variant, timeout: float = DEFAULT_TIMEOUT_S) -
             exploited=False,
             label=GroundTruth.label_for(False, False),
             elapsed_s=0.0,
-            detail=f"probe produced no output (rc={proc.returncode}): {proc.stderr[:400]}",
+            detail=(
+                f"probe produced no output (rc={proc.returncode}): {proc.stderr[:400]}"
+            ),
         )
 
     payload = json.loads(stdout)

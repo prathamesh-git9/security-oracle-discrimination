@@ -65,7 +65,9 @@ class BanditOracle:
         proc = _run(cmd)
         # bandit exits 1 when it has findings, which is a success for us.
         if proc.returncode not in (0, 1) or not proc.stdout.strip():
-            raise OracleError(f"bandit failed (rc={proc.returncode}): {proc.stderr[:500]}")
+            raise OracleError(
+                f"bandit failed (rc={proc.returncode}): {proc.stderr[:500]}"
+            )
 
         payload = json.loads(proc.stdout)
         results: dict[Path, list[Finding]] = {}
@@ -77,6 +79,7 @@ class BanditOracle:
                     cwes=normalise_cwes(item.get("issue_cwe")),
                     line=int(item.get("line_number", 0) or 0),
                     message=str(item.get("issue_text", ""))[:300],
+                    severity=str(item.get("issue_severity", "")),
                 )
             )
         return results
@@ -92,8 +95,17 @@ class SemgrepOracle:
 
     name = "semgrep"
 
-    def __init__(self, config: str = "p/python", executable: str | None = None) -> None:
+    def __init__(
+        self,
+        config: str = "p/python",
+        executable: str | None = None,
+        name: str | None = None,
+    ) -> None:
         self.config = config
+        # A semgrep result is a result *about a ruleset*, so the ruleset belongs
+        # in the oracle's identity. Auditing two of them is how this study
+        # separates "semgrep cannot see this" from "p/python has no rule for it".
+        self.name = name or f"semgrep:{config}"
         self._exe = executable or shutil.which("semgrep")
 
     def version(self) -> str:
@@ -126,7 +138,9 @@ class SemgrepOracle:
         ]
         proc = _run(cmd)
         if not proc.stdout.strip():
-            raise OracleError(f"semgrep produced no JSON (rc={proc.returncode}): {proc.stderr[:500]}")
+            raise OracleError(
+                f"semgrep produced no JSON (rc={proc.returncode}): {proc.stderr[:500]}"
+            )
 
         payload = json.loads(proc.stdout)
         results: dict[Path, list[Finding]] = {}
@@ -140,6 +154,7 @@ class SemgrepOracle:
                     cwes=normalise_cwes(metadata.get("cwe")),
                     line=int(item.get("start", {}).get("line", 0) or 0),
                     message=str(extra.get("message", ""))[:300],
+                    severity=str(extra.get("severity", "")),
                 )
             )
         return results

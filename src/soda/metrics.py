@@ -24,11 +24,22 @@ from __future__ import annotations
 import random
 from dataclasses import asdict, dataclass, field, replace
 
-from .models import AuditRecord, Label
+from .models import AuditRecord, Label, Verdict
 
 
 def _ratio(numerator: int, denominator: int) -> float:
     return numerator / denominator if denominator else float("nan")
+
+
+MODES = ("target", "any", "confident")
+
+
+def _detected(verdict: Verdict, mode: str) -> bool:
+    if mode == "any":
+        return verdict.flagged_any
+    if mode == "confident":
+        return verdict.flagged_target_confident
+    return verdict.flagged_target
 
 
 @dataclass
@@ -37,6 +48,8 @@ class OracleScore:
 
     oracle: str
     version: str = ""
+    #: "target" (pre-declared CWE match) or "any" (any finding counts).
+    mode: str = "target"
 
     n_secure: int = 0
     n_vulnerable: int = 0
@@ -101,9 +114,32 @@ def score_oracle(
     oracle_name: str,
     records: list[AuditRecord],
     version: str = "",
+    mode: str = "target",
 ) -> OracleScore:
-    """Score one oracle over every record whose label was established."""
-    score = OracleScore(oracle=oracle_name, version=version)
+    """Score one oracle over every record whose label was established.
+
+    ``mode`` chooses what counts as a detection, and the two secondary modes
+    exist to pre-empt the two obvious objections to the primary one.
+
+    - ``"target"`` -- the pre-declared primary analysis. The tool's own CWE claim
+      must intersect the case's accepted set.
+    - ``"any"`` -- any finding at all on the file counts. Deliberately
+      over-generous, and it exists because tools file weaknesses under
+      identifiers a harness may not be looking for: bandit reports unsafe YAML
+      loading as CWE-20, not CWE-502.
+    - ``"confident"`` -- as ``"target"``, but only findings the tool itself ranked
+      at medium severity or above. Deliberately strict, and it exists because a
+      low-severity advisory note lets a checker flag every file in a class:
+      bandit warns on the mere import of ``subprocess``, so it reports CWE-78 on
+      safe and injectable command execution alike.
+
+    Only the primary mode is a result. The other two are reported beside it so a
+    reader can see that neither loosening nor tightening the rule rescues the
+    conclusion.
+    """
+    if mode not in MODES:
+        raise ValueError(f"unknown scoring mode: {mode}")
+    score = OracleScore(oracle=oracle_name, version=version, mode=mode)
 
     by_case: dict[str, list[AuditRecord]] = {}
     for record in records:
@@ -134,13 +170,13 @@ def score_oracle(
                 score.errors += 1
                 continue
             if record.variant.canonical and record.truth.label is Label.VULNERABLE:
-                canonical_detected = verdict.flagged_target
+                canonical_detected = _detected(verdict, mode)
 
         for record in case_records:
             verdict = record.verdicts.get(oracle_name)
             if verdict is None or verdict.error:
                 continue
-            flagged = verdict.flagged_target
+            flagged = _detected(verdict, mode)
 
             if record.truth.label is Label.VULNERABLE:
                 score.n_vulnerable += 1
@@ -196,6 +232,7 @@ def cluster_bootstrap(
     statistic: str,
     iterations: int = 2000,
     seed: int = 20260814,
+    mode: str = "target",
 ) -> tuple[float, float]:
     """Percentile confidence interval for one statistic, resampling by case."""
     by_case: dict[str, list[AuditRecord]] = {}
@@ -222,7 +259,7 @@ def cluster_bootstrap(
                         verdicts=record.verdicts,
                     )
                 )
-        value = getattr(score_oracle(oracle_name, resampled), statistic)
+        value = getattr(score_oracle(oracle_name, resampled, mode=mode), statistic)
         if value == value:  # skip NaN
             samples.append(value)
 

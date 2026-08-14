@@ -194,13 +194,15 @@ class _Visitor(ast.NodeVisitor):
             )
         if name == "hashlib.new" and node.args:
             first = node.args[0]
-            if isinstance(first, ast.Constant) and str(first.value).lower() in WEAK_DIGESTS:
-                self._add(
-                    "AST-HASH-WEAK",
-                    ("CWE-916", "CWE-327"),
-                    node,
-                    f"weak digest {first.value} selected by name",
-                )
+            if isinstance(first, ast.Constant):
+                named = str(first.value).lower()
+                if named in WEAK_DIGESTS:
+                    self._add(
+                        "AST-HASH-WEAK",
+                        ("CWE-916", "CWE-327"),
+                        node,
+                        f"weak digest {named} selected by name",
+                    )
 
         if name.startswith("random.") and tail in RANDOM_DRAWS and tail != "SystemRandom":
             self._add(
@@ -236,9 +238,8 @@ class StructuralOracle:
             try:
                 tree = ast.parse(source, filename=str(path))
             except SyntaxError as exc:
-                results[path] = [
-                    Finding("AST-PARSE-ERROR", (), getattr(exc, "lineno", 0) or 0, str(exc))
-                ]
+                line = getattr(exc, "lineno", 0) or 0
+                results[path] = [Finding("AST-PARSE-ERROR", (), line, str(exc))]
                 continue
 
             visitor = _Visitor()

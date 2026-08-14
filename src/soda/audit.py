@@ -8,14 +8,14 @@ import platform
 import sys
 from collections.abc import Callable
 from dataclasses import asdict
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from .corpus import load_corpus
 from .groundtruth import DEFAULT_TIMEOUT_S, evaluate
 from .metrics import OracleScore, cluster_bootstrap, score_oracle
 from .models import AuditRecord, Case, Label, Verdict
-from .oracles import Oracle, OracleError, build_oracles
+from .oracles import Oracle, OracleError, build_oracles, severity_rank
 
 Progress = Callable[[str], None]
 
@@ -80,25 +80,36 @@ def run_audit(
         for path, record in by_path.items():
             findings = found.get(path, [])
             accepted = accept_by_case[record.variant.case_id]
+            on_target = [f for f in findings if set(f.cwes) & accepted]
             record.verdicts[oracle.name] = Verdict(
                 oracle=oracle.name,
                 case_id=record.variant.case_id,
                 variant_id=record.variant.variant_id,
-                flagged_target=any(
-                    set(finding.cwes) & accepted for finding in findings
-                ),
+                flagged_target=bool(on_target),
                 flagged_any=bool(findings),
+                flagged_target_confident=any(
+                    severity_rank(f.severity) >= 2 for f in on_target
+                ),
                 rule_ids=tuple(sorted({f.rule_id for f in findings})),
             )
 
     # -- 3. Scores ---------------------------------------------------------
     scores: list[OracleScore] = []
+    scores_any: list[OracleScore] = []
+    scores_confident: list[OracleScore] = []
     intervals: dict[str, dict[str, list[float]]] = {}
     for oracle in oracles:
         if oracle.name in oracle_errors:
             continue
-        score = score_oracle(oracle.name, records, version=oracle_versions[oracle.name])
+        version = oracle_versions[oracle.name]
+        score = score_oracle(oracle.name, records, version=version)
         scores.append(score)
+        scores_any.append(
+            score_oracle(oracle.name, records, version=version, mode="any")
+        )
+        scores_confident.append(
+            score_oracle(oracle.name, records, version=version, mode="confident")
+        )
         if bootstrap_iterations:
             progress(f"bootstrapping {oracle.name}")
             intervals[oracle.name] = {
@@ -121,7 +132,7 @@ def run_audit(
         label_counts[record.truth.label.value] += 1
 
     return {
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "environment": {
             "python": sys.version.split()[0],
             "platform": platform.platform(),
@@ -148,6 +159,9 @@ def run_audit(
             "errors": oracle_errors,
         },
         "scores": [score.to_dict() for score in scores],
+        # Sensitivity analyses, never the result: see metrics.score_oracle.
+        "scores_any_finding": [score.to_dict() for score in scores_any],
+        "scores_confident_only": [score.to_dict() for score in scores_confident],
         "confidence_intervals": intervals,
         "records": [
             {
@@ -184,11 +198,26 @@ def write_results(results: dict, path: Path) -> Path:
 def corpus_integrity(corpus_root: Path | None = None) -> list[str]:
     """Structural problems that would invalidate the audit, as plain sentences."""
     problems: list[str] = []
+    # Two variants with identical bytes would be a mutation that never happened:
+    # the pair contributes two observations that are really one, and inflates any
+    # rate computed over them. Cheap to check, easy to introduce by accident.
+    seen_digests: dict[str, str] = {}
+    for case in load_corpus(corpus_root):
+        for variant in case.variants:
+            digest = hashlib.sha256(variant.path.read_bytes()).hexdigest()
+            twin = seen_digests.get(digest)
+            here = f"{case.case_id}/{variant.variant_id}"
+            if twin:
+                problems.append(f"{here}: byte-identical to {twin}")
+            else:
+                seen_digests[digest] = here
+
     for case in load_corpus(corpus_root):
         canonical = [v for v in case.variants if v.canonical]
         if len(canonical) != 1:
             problems.append(
-                f"{case.case_id}: expected exactly one canonical variant, found {len(canonical)}"
+                f"{case.case_id}: expected exactly one canonical variant, "
+                f"found {len(canonical)}"
             )
         if not any(v.declared == "secure" for v in case.variants):
             problems.append(f"{case.case_id}: no secure variants")
